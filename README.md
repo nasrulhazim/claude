@@ -155,6 +155,15 @@ A one-off instruction in your own prompt always wins for that reply ("explain in
 "just the table", "terangkan panjang"), then the session mode resumes. Safety caveats, unmet
 requirements and failing tests are reported in **every** mode.
 
+## Browser Sessions
+
+Anything that opens a browser — Claude in Chrome, Playwright, Puppeteer, a preview server —
+uses the window as you left it: your current screen size, full screen stays full screen. No
+`resize_window`, no mobile emulation, no shrinking the window for a screenshot. Ask for it in
+your own prompt ("check this at mobile width", "tengok kat mobile view") and that request only
+is resized. Installed as its own managed block in `~/.claude/CLAUDE.md`; skip it with
+`--no-browser-rules`.
+
 ## Companions
 
 Two upstream tools are installed alongside the toolkit because several skills and agents
@@ -202,6 +211,7 @@ bash install.sh --dry-run                     # preview without writing
 bash install.sh --only kickoff-pest-testing   # install a single skill, agent or command
 bash install.sh --no-companions               # skip graphify and ponytail
 bash install.sh --no-output-format            # skip the TLDR+table block in ~/.claude/CLAUDE.md
+bash install.sh --no-browser-rules            # skip the browser-sessions block in ~/.claude/CLAUDE.md
 ```
 
 </details>

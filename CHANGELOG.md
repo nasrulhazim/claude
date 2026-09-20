@@ -3,6 +3,34 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.6.0] - 2026-09-20
+
+### Added
+
+- `templates/browser-behavior.md` — a second managed block in `~/.claude/CLAUDE.md`
+  (`claude-toolkit:browser`): anything that opens a browser uses the window as the user left
+  it — their real screen size, full screen stays full screen. No `resize_window`, no viewport
+  override, no mobile emulation, no shrinking the window for a screenshot. Overridden only by
+  an explicit instruction in the user's own prompt, for that request only
+- `--no-browser-rules` installer flag to skip that block
+
+### Changed
+
+- `install_output_format` generalised to `install_managed_block <name> <template> <label>` so
+  each preference block is one template file plus one call. `--no-output-format` keeps its
+  exact previous meaning — it gates the output-format block only
+
+## [2.5.0] - 2026-09-13
+
+### Added
+
+- `debugging` and `security-hardening` skills
+- `performance-tuning` and `ui-accessibility` skills
+- `## Verification` checkbox gates on high-stakes skills
+- Companions (graphify, ponytail) installed from upstream by `install.sh`, never vendored
+- `templates/output-format.md` — TLDR + tables default written as a managed block in
+  `~/.claude/CLAUDE.md`, with `/output <mode>` to switch per session
+
 ## [2.4.0] - 2026-08-28
 
 ### Added

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Claude Toolkit Installer — skills, agents and commands
-# Version: 2.5.0
+# Version: 2.6.0
 # Usage (remote): curl -fsSL https://raw.githubusercontent.com/nasrulhazim/claude/main/install.sh | bash
 # Usage (local):  bash install.sh [--dry-run] [--only <name>]
 #
@@ -10,6 +10,7 @@
 #   --only <name>        Install a single skill, agent or command by name
 #   --no-companions      Skip the companion tools (graphify, ponytail)
 #   --no-output-format   Skip the TLDR+table output-format block in ~/.claude/CLAUDE.md
+#   --no-browser-rules   Skip the browser-sessions block in ~/.claude/CLAUDE.md
 
 set -e
 
@@ -18,12 +19,14 @@ DRY_RUN=0
 ONLY=""
 COMPANIONS=1
 OUTPUT_FORMAT=1
+BROWSER_RULES=1
 while [ $# -gt 0 ]; do
     case "$1" in
         --dry-run) DRY_RUN=1 ;;
         --only) ONLY="$2"; shift ;;
         --no-companions) COMPANIONS=0 ;;
         --no-output-format) OUTPUT_FORMAT=0 ;;
+        --no-browser-rules) BROWSER_RULES=0 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
     shift
@@ -32,7 +35,7 @@ done
 echo ""
 echo "Claude Toolkit Installer"
 echo "========================"
-echo "Version: 2.5.0"
+echo "Version: 2.6.0"
 [ $DRY_RUN -eq 1 ] && echo "(dry run — nothing will be written)"
 echo ""
 
@@ -243,24 +246,26 @@ done
 
 echo ""
 
-# --- Output format default: TLDR + tables in ~/.claude/CLAUDE.md ---
-# Written as a delimited managed block so re-running the installer replaces it
+# --- Global preference blocks in ~/.claude/CLAUDE.md ---
+# Written as delimited managed blocks so re-running the installer replaces them
 # rather than appending, and the user's own instructions are never touched.
-install_output_format() {
+# Args: <block-name> <template-file> <label>
+install_managed_block() {
+    local name="$1" template="$2" label="$3"
     local claude_md="$CLAUDE_DIR/CLAUDE.md"
-    local start="<!-- claude-toolkit:output-format:start -->"
-    local end="<!-- claude-toolkit:output-format:end -->"
+    local start="<!-- claude-toolkit:${name}:start -->"
+    local end="<!-- claude-toolkit:${name}:end -->"
     local block
 
     if [ "$INSTALL_MODE" = "local" ]; then
-        block=$(cat "$REPO_DIR/templates/output-format.md" 2>/dev/null)
+        block=$(cat "$REPO_DIR/templates/$template" 2>/dev/null)
     else
-        block=$(curl -fsSL "$REPO_URL/templates/output-format.md" 2>/dev/null)
+        block=$(curl -fsSL "$REPO_URL/templates/$template" 2>/dev/null)
     fi
-    [ -n "$block" ] || { echo -e "  ${RED}✗${NC} output format (template unavailable)"; return 1; }
+    [ -n "$block" ] || { echo -e "  ${RED}✗${NC} $label (template unavailable)"; return 1; }
 
     if [ $DRY_RUN -eq 1 ]; then
-        echo -e "  ${BLUE}would write${NC} output-format block → $claude_md"
+        echo -e "  ${BLUE}would write${NC} ${name} block → $claude_md"
         return 0
     fi
 
@@ -276,12 +281,13 @@ install_output_format() {
         printf '%s\n' "$(cat "$claude_md")" > "$claude_md"
     fi
     printf '\n%s\n' "$block" >> "$claude_md"
-    echo -e "  ${GREEN}✓${NC} output format (TLDR + tables) → ~/.claude/CLAUDE.md"
+    echo -e "  ${GREEN}✓${NC} $label → ~/.claude/CLAUDE.md"
 }
 
-if [ $OUTPUT_FORMAT -eq 1 ]; then
-    echo -e "${BLUE}Output format${NC}"
-    install_output_format || true
+if [ $OUTPUT_FORMAT -eq 1 ] || [ $BROWSER_RULES -eq 1 ]; then
+    echo -e "${BLUE}Preferences${NC}"
+    [ $OUTPUT_FORMAT -eq 1 ] && { install_managed_block "output-format" "output-format.md" "output format (TLDR + tables)" || true; }
+    [ $BROWSER_RULES -eq 1 ] && { install_managed_block "browser" "browser-behavior.md" "browser sessions (never resize)" || true; }
     echo ""
 fi
 

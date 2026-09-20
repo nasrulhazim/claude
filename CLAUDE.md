@@ -14,7 +14,7 @@ A complete Claude Code toolkit: skills, agents and commands in one repo (`nasrul
 
 ```
 .claude-plugin/               # plugin.json + marketplace.json (single plugin, source "./")
-templates/output-format.md    # managed block appended to ~/.claude/CLAUDE.md by install.sh
+templates/                    # managed blocks appended to ~/.claude/CLAUDE.md by install.sh
 skills/
 ├── [skill-name]/
 │   ├── SKILL.md              # YAML frontmatter + markdown instructions
@@ -122,12 +122,19 @@ from the skills and agents that use them. Neither is copied into this repo. Wiri
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
 | ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer` |
 
-## Output Format
+## Managed Preference Blocks
 
-`templates/output-format.md` is appended to `~/.claude/CLAUDE.md` inside
-`<!-- claude-toolkit:output-format:start -->` / `:end` markers. `install.sh` strips and
-rewrites the block on every run, so it never duplicates and never touches the user's own
-instructions. The default is **TLDR + tables**; `/output <mode>` switches it for a session.
+Each file in `templates/` is appended to `~/.claude/CLAUDE.md` inside
+`<!-- claude-toolkit:<name>:start -->` / `:end` markers by `install_managed_block` in
+`install.sh`, which strips and rewrites the block on every run — never duplicating, never
+touching the user's own instructions. Each block has its own opt-out flag.
 
-> **Gotcha:** the output-format block lives in the *user's* `~/.claude/CLAUDE.md`, not this
-> repo's. Editing `templates/output-format.md` only takes effect after the user reinstalls.
+| Block | Template | Opt-out | Rule |
+|---|---|---|---|
+| `output-format` | `templates/output-format.md` | `--no-output-format` | Default **TLDR + tables**; `/output <mode>` switches per session |
+| `browser` | `templates/browser-behavior.md` | `--no-browser-rules` | Never resize the browser window — user's real screen size, full screen stays full screen, unless their prompt asks otherwise |
+
+Adding a third block = one new template file + one `install_managed_block` call + its flag.
+
+> **Gotcha:** these blocks live in the *user's* `~/.claude/CLAUDE.md`, not this repo's.
+> Editing a template only takes effect after the user reinstalls.
