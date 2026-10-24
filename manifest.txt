@@ -70,6 +70,16 @@ skills/php-best-practices/references/code-smells.md
 skills/php-best-practices/references/php82-features.md
 skills/php-best-practices/references/rector-rules.md
 skills/php-best-practices/references/refactoring-catalog.md
+skills/product-blueprint/SKILL.md
+skills/product-blueprint/references/blueprint-sections.md
+skills/product-blueprint/references/contract-patterns.md
+skills/product-blueprint/references/nfr-checklist.md
+skills/product-brand-kit/SKILL.md
+skills/product-brand-kit/references/brand-book-outline.md
+skills/product-brand-kit/references/export-matrix.md
+skills/product-brand-kit/references/landing-page-sections.md
+skills/product-brand-kit/references/logo-build-pipeline.md
+skills/product-brand-kit/references/naming-patterns.md
 skills/project-api/SKILL.md
 skills/project-api/references/api-governance-patterns.md
 skills/project-api/references/api-security-checklist.md

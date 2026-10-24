@@ -30,10 +30,11 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 </details>
 
 <details>
-<summary><strong>Project Management</strong> (11 skills)</summary>
+<summary><strong>Project Management</strong> (12 skills)</summary>
 
 | Skill | Description |
 |---|---|
+| [product-blueprint](skills/product-blueprint/) | BR doc + prototype screenshots to one tabbed HTML blueprint — requirements, NFRs, architecture, roadmap, sprint plan and mockups for the missing screens |
 | [project-api](skills/project-api/) | Full API lifecycle — design through governance |
 | [project-conventions](skills/project-conventions/) | Auto-update CLAUDE.md with corrections, preferences, and gotchas |
 | [project-ddd](skills/project-ddd/) | Pragmatic DDD — domain discovery, migration planning, and boundary enforcement |
@@ -75,11 +76,12 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 </details>
 
 <details>
-<summary><strong>Business & Design</strong> (5 skills)</summary>
+<summary><strong>Business & Design</strong> (6 skills)</summary>
 
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
+| [product-brand-kit](skills/product-brand-kit/) | Name to launch-ready identity — naming, outlined-font logo, contrast-checked brand kit, domain plan, landing page, all-sizes export pack with WhatsApp-safe avatars |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control |

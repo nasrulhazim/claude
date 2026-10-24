@@ -3,6 +3,19 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+
+### Added
+
+- `product-blueprint` skill — turns a BR document and prototype screenshots (a Drive or local
+  folder) into one tabbed HTML blueprint: English requirements with phase, MoSCoW and prototype
+  coverage, non-functional requirements the BR doc implies, architecture with state machines,
+  the key contract and Pest tests, a phased roadmap with exit criteria, a sprint plan with risks,
+  and mockups only for the screens the prototype lacks
+- `product-brand-kit` skill — naming (code name vs public brand), a logo built from real font
+  outlines, a contrast-checked brand kit, domain advice with a migration plan, a landing page
+  with no invented claims, and an all-sizes export pack with circle-safe WhatsApp/social avatars
+
 ## [2.6.0] - 2026-09-20
 
 ### Added
