@@ -53,9 +53,12 @@ Spacing 4/8/12/16/24/32/48. Radius sm 8, md 12, lg 16, pill 999, and the icon ti
 5. **Colour**: how much brand colour per screen, text-on-fill rules, status rules, third-party brand colours kept inside their badges
 6. **Typography**: roles and line length
 7. **Layout and shape**: spacing, radii, borders over shadows, app frame, focus ring
-8. **Iconography**: one line-icon set, official third-party glyphs only, no mascots
-9. **Motion**: durations and the one brand animation, with respect for reduced motion
-10. **Web**: the domain, how to write it, and the plan for moving to an own domain later
+8. **Photography**:
+   - light, subjects, setting, people, palette fit, what to avoid
+   - the art-direction brief that `photo-sourcing.md` searches with
+9. **Iconography**: one line-icon set, official third-party glyphs only, no mascots
+10. **Motion**: durations and the one brand animation, with respect for reduced motion
+11. **Web**: the domain, how to write it, and the plan for moving to an own domain later
 
 ## Components
 

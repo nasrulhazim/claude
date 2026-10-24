@@ -81,7 +81,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
-| [product-brand-kit](skills/product-brand-kit/) | Name to launch-ready identity — naming, outlined-font logo, contrast-checked brand kit, domain plan, landing page, all-sizes export pack with WhatsApp-safe avatars |
+| [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, outlined-font logo, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control |

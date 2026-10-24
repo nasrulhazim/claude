@@ -14,7 +14,12 @@ The format follows [Keep a Changelog](https://keepachangelog.com) and this proje
   and mockups only for the screens the prototype lacks
 - `product-brand-kit` skill — naming (code name vs public brand), a logo built from real font
   outlines, a contrast-checked brand kit, domain advice with a migration plan, a landing page
-  with no invented claims, and an all-sizes export pack with circle-safe WhatsApp/social avatars
+  with no invented claims, and an all-sizes export pack with circle-safe WhatsApp/social avatars.
+  Also sources a licensed, art-directed photo set (Unsplash, Pexels, Pixabay, Openverse, Wikimedia,
+  own shoots) with a credits file, and builds a marketing kit: message house in EN/BM, social post
+  set, captions, carousel, video script, email, WhatsApp broadcast, blog, press release, ads, deck,
+  and print pieces (flyer, poster, roll-up, bunting, booth, brochure, stickers, merch) with bleed,
+  QR and UTM rules
 
 ## [2.6.0] - 2026-09-20
 

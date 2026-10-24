@@ -11,11 +11,20 @@ the brand kit.
 | 4 | How it works | The real sequence, numbered | Number only if it's a true order |
 | 5 | Features | ~8 features with line icons | Features not built yet get "Coming <year>", matched to the roadmap |
 | 6 | Trust band | Dark brand block: the safety or AI promise, as an allowed/never list | One message only |
-| 7 | Local fit | 4 cards: timezone, privacy law, multi-tenant, fast lanes | Only claims grounded in the requirements |
+| 7 | Local fit | One wide photo of a local workplace + 4 cards: timezone, privacy law, multi-tenant, fast lanes | Only claims grounded in the requirements; photo from the `local fit band` slot |
 | 8 | Pricing | 2 self-serve plans + enterprise "Quotation" | `RM [PRICE]` until the user gives prices |
 | 9 | FAQ | 4 `<details>` | Answer the hardest questions first: failures, accounts needed, data location |
 | 10 | CTA band | Brand-colour band, short line, real form with `<label>`s | No fake success message |
-| 11 | Footer | Reversed wordmark, link columns, legal name, website, registration number, public contact | All from project context |
+| 11 | Footer | Reversed wordmark, link columns, legal name, website, registration number, public contact, photo credit line | All from project context |
+
+## Photos
+
+Use the photo set from `photo-sourcing.md`:
+- one hero-support photo that sits beside the product visual and never covers its UI
+- one wide local-fit photo
+- testimonial photos only of real customers
+
+Upload each photo as an asset inside artifacts. Use `loading="lazy"` below the fold, and write alt text that describes the scene.
 
 ## Claim Check (before publishing)
 
