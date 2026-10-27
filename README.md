@@ -86,7 +86,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control |
 | [courseware-builder](skills/courseware-builder/) | Interactive HTML courseware builder with animated diagrams |
-| [docs-explainer-video](skills/docs-explainer-video/) | Docs page to a branded 60s explainer MP4 (720p/1080p/4K) — real logo and colours from the live site, word-by-word config scenes, topology diagram, "it's live" browser scene, music and SFX synced from the same timeline; vendor-neutral |
+| [docs-explainer-video](skills/docs-explainer-video/) | Docs page to a branded, narrated 60s explainer MP4 (720p/1080p/4K) — real logo and colours from the live site, word-by-word config scenes, topology diagram, "it's live" browser scene, music, SFX and a local text-to-speech narrator synced from the same timeline; vendor-neutral |
 | [docs-video-series](skills/docs-video-series/) | Whole docs site to a video series plan — per-page notes, triage (video / merge / feeds / none / hold), series map with hooks from the docs' own warnings, wave-1 scene sheets, 9:16 gotcha shorts, engine gaps, docs issues to fix first, gated roadmap |
 
 </details>

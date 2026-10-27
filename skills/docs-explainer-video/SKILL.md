@@ -2,27 +2,28 @@
 name: docs-explainer-video
 metadata:
   compatible_agents: [claude-code, codex-cli, gemini-cli, cursor, chatgpt, gemini]
-  tags: [video, explainer, documentation, tutorial, motion-graphics, playwright, ffmpeg, audio, branding, marketing]
+  tags: [video, explainer, documentation, tutorial, motion-graphics, playwright, ffmpeg, audio, narration, voice-over, tts, branding, marketing]
 description: >
-  Turns a product documentation page into a branded ~60-second explainer video with music and
-  sound effects synced to the picture, rendered deterministically to 720p, 1080p or 4K MP4. It
+  Turns a product documentation page into a branded ~60-second explainer video with a narrator,
+  music and sound effects synced to the picture, rendered deterministically to 720p, 1080p or 4K MP4. It
   maps doc sections to nine scene patterns (title, wizard form, single-path form, word-by-word
   sentence builder, topology diagram, review with guards, pipeline, "it's live" browser scene,
   end card), takes the real logo, colours and fonts from the product's live site, draws every frame
   as a pure function of time in a headless browser, synthesises a licence-free music bed and SFX from
-  the same timeline, and ships an editable source project. Vendor-neutral: works in any assistant;
+  the same timeline, narrates timed lines with a local text-to-speech voice (pronunciation map, overrun
+  check, music ducked under the voice), and ships an editable source project. Vendor-neutral: works in any assistant;
   ones without a shell produce the project and the user renders it with one command. Use this skill
   whenever the user asks to "make a video from this doc", "explainer video for this page",
   "tutorial video for the getting-started guide", "turn the docs into a video", "product walkthrough
-  video", "render it in 1080p / 4K", "buat video dari dokumentasi ni", "buat video explainer untuk
-  page ni", "jadikan docs ni video", "buat video tutorial produk", or "render video resolusi tinggi".
+  video", "render it in 1080p / 4K", "add a voice-over", "narrate the video", "buat video dari dokumentasi ni", "buat video explainer untuk
+  page ni", "jadikan docs ni video", "buat video tutorial produk", "tambah suara / voice over", or "render video resolusi tinggi".
 ---
 
 # Docs Explainer Video
 
-Turns one documentation page into a ~60-second explainer that walks a viewer through the guide in the product's real brand, with music and sound effects synced to the picture. Output is an MP4 plus an editable source project.
+Turns one documentation page into a ~60-second explainer that walks a viewer through the guide in the product's real brand, with a narrator, music and sound effects synced to the picture. Output is an MP4 plus an editable source project.
 
-The skill is plain Markdown. Its code (engine, render and audio scripts, starter brand and a complete example) lives in `references/toolkit-*.md` as marked blocks, and one unpack command writes them to disk. That makes it work in any assistant: those with a shell render end to end, and chat-only ones hand the user a project to render locally.
+The skill is plain Markdown. Its code (engine, render, audio and narration scripts, starter brand and a complete narrated example) lives in `references/toolkit-*.md` as marked blocks, and one unpack command writes them to disk. That makes it work in any assistant: those with a shell render end to end, and chat-only ones hand the user a project to render locally.
 
 ## Command Reference
 
@@ -32,7 +33,8 @@ The skill is plain Markdown. Its code (engine, render and audio scripts, starter
 | `/video brand <site-url>` | Extract logo, colour variables and fonts into `brand.js` |
 | `/video build` | Unpack the toolkit, create the project, write `scenes.js` |
 | `/video stills` | One still per scene in a contact sheet; review before rendering |
-| `/video render [720\|1080\|2160]` | Timeline → audio → frames → MP4 (720p preview first) |
+| `/video voice` | Write `narration.json`, synthesise it, and fix any line that overruns its scene |
+| `/video render [720\|1080\|2160]` | Timeline → music + SFX → narration → frames → MP4 (720p preview first) |
 | `/video deliver` | MP4 + source zip + summary of scenes, fictional data and next step |
 
 ## When to Use
@@ -92,6 +94,8 @@ cp toolkit/template/brand.js my-video/            # then fill it (step 3)
 cp toolkit/examples/g8deck-first-deployment/scenes.js my-video/   # starting point
 ```
 
+In `brand.js`, set `voice` (voice id, speed, language) and `say`, which maps written product names to how they are spoken, e.g. `'G8Deck':'Gate Deck'`. Add a name only once its pronunciation is confirmed with the user.
+
 Rewrite `scenes.js`:
 - `SPEC` sets the timeline: `d`, `k` speed factor, `cap`, `rail`, `reveal`, `lift`.
 - `RAIL` sets the doc's numbered steps.
@@ -99,7 +103,23 @@ Rewrite `scenes.js`:
 
 Copy pattern functions from the example and change text and data. Every frame must be a pure function of time: no timers, no wall-clock, no unseeded randomness. Sound cues come from the same calls (`pop`, `typed`, `cue()`), so audio stays in sync on its own. `scene.html?t=12.5` previews any moment in a browser.
 
-## 5. Review, then render
+## 5. Write the narration
+
+Follow `references/narration-guide.md`. `narration.json` holds timed lines:
+- one line per beat, starting 0.3s after its scene (scene starts are in `timeline.json` after `capture.py --timeline`);
+- about 2.5 words per second;
+- say *why* the scene matters, not what's already on screen;
+- title line = the title, last line = product name + tagline;
+- product names written as spelled; `say` handles pronunciation.
+
+```bash
+python3 toolkit/scripts/capture.py my-video --timeline && python3 toolkit/scripts/audio.py my-video
+python3 toolkit/scripts/narrate.py my-video    # prints each line's length vs its room; exits 2 on any overrun
+```
+
+Shorten any line that overruns, or move the next line later, until it passes. Skip this step for a silent video (or render with `--no-voice`).
+
+## 6. Review, then render
 
 ```bash
 bash toolkit/scripts/render.sh my-video 720 --stills-only   # -> my-video/contact_sheet.png
@@ -108,15 +128,19 @@ bash toolkit/scripts/render.sh my-video 1080                 # final, ~6 min
 bash toolkit/scripts/render.sh my-video 2160                 # 4K on request, ~20 min — run in the background
 ```
 
+Narration is added automatically when `narration.json` exists. A wording change needs only `render.sh` again: frames are reused, only audio and encoding rerun.
+
 Read the contact sheet before any full render. Fix:
 - wrapped numbers (`white-space:nowrap`);
 - overlaps;
 - a cursor missing its button;
 - leftover hardcoded colours.
 
-The assistant can't hear audio, so check loudness with `ffmpeg -i my-video/audio.wav -af ebur128 -f null -` (target about -16 LUFS after mux) and ask the user to listen.
+The assistant can't hear audio, so check loudness with `ffmpeg -i my-video/audio_vo.wav -af ebur128 -f null -` (about -16 LUFS) and ask the user to listen, at least to the product-name pronunciation.
 
-## 6. Deliver
+The local voice (Kokoro) has no Malay. For Bahasa Melayu narration, keep `narration.json` timing and use a cloud TTS with the user's API key.
+
+## 7. Deliver
 
 Send:
 - the MP4;
@@ -126,7 +150,7 @@ Reply with:
 - a table of what each scene shows;
 - what's fictional (sample data, mock UI), with an offer to use real screenshots;
 - a note that MP4s can't hold links, so the URL goes in the upload description;
-- one next step (9:16 cut, voiceover, a second page).
+- one next step (9:16 cut, a different voice, a second page).
 
 ## Other assistants
 
@@ -134,7 +158,7 @@ Reply with:
 |---|---|
 | Shell + network + Chromium (Claude Code, Codex CLI, Gemini CLI, Cursor agents) | Full workflow, end to end |
 | Sandbox without browser or network | Build the project, zip it, give the user `setup.sh` + `render.sh` |
-| Chat only (ChatGPT, Gemini apps) | Output `brand.js` and `scenes.js` as code blocks; the user unpacks the toolkit and renders |
+| Chat only (ChatGPT, Gemini apps) | Output `brand.js`, `scenes.js` and `narration.json` as code blocks; the user unpacks the toolkit and renders |
 
 ## Common Rationalizations
 
@@ -148,6 +172,9 @@ Reply with:
 | "A setTimeout here is harmless" | Wall-clock timing makes frames depend on render speed. Everything is a function of `t`. |
 | "Skip the stills, render the whole thing" | A full render takes minutes; a contact sheet takes seconds and catches layout bugs. |
 | "Audio sounds fine" | You can't hear it. Measure loudness and ask the user to listen. |
+| "I'll spell it phonetically in the script" | The script stops matching the screen and every other video. Put the pronunciation in `say`, once. |
+| "Slow the voice down a bit so it fits" | Above speed 1.1 it sounds rushed, and slowing the picture breaks the music. Cut words. |
+| "Let the narrator read what's on screen" | Viewers read faster than the voice speaks. Say why the scene matters. |
 
 ## Red Flags
 
@@ -158,6 +185,9 @@ Reply with:
 - Audio cues land in the wrong scene. Usually a `cue()` time is beyond the scene's `d * k`.
 - Text wraps inside stat cards or pills.
 - The end card shows a deep docs URL instead of the product site.
+- `narrate.py` exited with an overrun and the render went ahead with `--allow-overrun`.
+- A product name written phonetically in `narration.json`.
+- A narration line that states something the source page doesn't.
 
 ## Verification
 
@@ -169,6 +199,7 @@ Reply with:
 - [ ] An "it's live" scene shows the outcome before the end card; the end card is held ≥ 3s
 - [ ] `timeline.json` regenerated after the last edit, so the audio matches the picture
 - [ ] MP4 has video and audio streams of equal duration; loudness checked
+- [ ] If narrated: no overruns, pronunciations come from `say`, and a person has listened
 - [ ] Source zip excludes `frames_*`; fictional data and the link-in-description note were stated
 
 ---
@@ -180,7 +211,8 @@ Reply with:
 | `references/scene-patterns.md` | Planning scenes; choosing helpers, sound cues and timeline keys |
 | `references/brief-template.md` | Writing the scene sheet before building |
 | `references/brand-template.md` | Extracting the brand from a site and filling `brand.js` |
-| `references/toolkit-scripts.md` | Unpacking the toolkit; setup, render, capture, fonts and contact-sheet scripts |
+| `references/narration-guide.md` | Writing `narration.json`: timing rules, voices, pronunciation, review |
+| `references/toolkit-scripts.md` | Unpacking the toolkit; setup, render, capture, narration, fonts and contact-sheet scripts |
 | `references/toolkit-engine.md` | Changing motion, camera or HUD behaviour (rare; normally untouched) |
 | `references/toolkit-audio.md` | Adjusting the music sections or SFX palette |
-| `references/example-g8deck.md` | Starting `scenes.js`: the complete approved example to copy from |
+| `references/example-g8deck.md` | Starting `scenes.js` and `narration.json`: the complete approved example to copy from |

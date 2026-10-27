@@ -38,6 +38,10 @@ No browser? Ask the user for the logo SVG, 4–6 hex colours and the font names.
 | A | The wordmark is stroke paths | `viewBox`, `iconOrigin`, `strokeWidth`, `icon` (filled mark using `var(--acc)`), `word[]` (one path per letter group) |
 | B | Any logo | `svg` (complete `<svg>`), which pops and wipes in |
 
+## Voice and pronunciation
+
+`voice` sets the narrator for every video of this product: Kokoro voice id, speed, language, and `say`, a map from how a word is written to how it is spoken (`'G8Deck':'Gate Deck'`). Scripts keep the written spelling; `say` is applied at synthesis. Add a name to `say` only once its pronunciation is confirmed. See `narration-guide.md`.
+
 ## Starter file
 
 <!-- file: template/brand.js -->
@@ -55,6 +59,10 @@ const BRAND={
   // Mode B (works with any logo): paste the complete <svg>. It pops in and wipes left-to-right.
   svg:'<svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="32" height="32" rx="8" fill="#3b82f6"/><text x="48" y="34" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#e8edf2">Acme Cloud</text></svg>',
   // Mode A (nicer, when the wordmark is stroke paths): viewBox, iconOrigin, strokeWidth, icon:'<path fill="var(--acc)" .../>', word:['M..','M..']
+ },
+ voice:{                     // narration (Kokoro TTS). Voices: af_heart, af_bella, am_michael, bf_emma, bm_george, …
+  voice:'af_heart', speed:1.0, lang:'en-us',
+  say:{ /* 'ProductName':'how it is spoken' — e.g. 'G8Deck':'Gate Deck' */ },
  },
  colors:{
   bg:'#0b0f14', panel:'#111821', panel2:'#18212b', field:'#0d131a', line:'#222d38', strong:'#33424f',

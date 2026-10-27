@@ -14,6 +14,8 @@ A complete, approved 60s video built from https://g8deck.com/docs/first-deployme
 | 7 | 49–56 | It's live — billing.acme.my renders, post-checks tick | It's live |
 | 8 | 56–60 | End card — logo, tagline, g8deck.com → | End card |
 
+It is narrated: `narration.json` holds 13 timed lines, and the brand's `say` map speaks G8Deck as "Gate Deck".
+
 Fonts for this brand: `fetch_fonts.sh <project>/fonts archivo:400,500,600,700,800 ibm-plex-mono:400,500,600 martian-mono:400,500`.
 
 <!-- file: examples/g8deck-first-deployment/brand.js -->
@@ -30,6 +32,10 @@ const BRAND={
   icon:'<path fill="var(--acc)" fill-rule="evenodd" d="M16 6 h16 a10 10 0 0 1 10 10 v4 h-4 v6 h4 v6 a10 10 0 0 1 -10 10 h-16 a10 10 0 0 1 -10 -10 v-6 h4 v-6 h-4 v-4 a10 10 0 0 1 10 -10 z M16 12 H32 A4 4 0 0 1 36 16 V18 A2 2 0 0 1 34 20 H14 A2 2 0 0 1 12 18 V16 A4 4 0 0 1 16 12 Z M14 26 H34 A2 2 0 0 1 36 28 V32 A4 4 0 0 1 32 36 H16 A4 4 0 0 1 12 32 V28 A2 2 0 0 1 14 26 Z"/>',
   word:['M70 25 H80 A10 10 0 0 1 70 35 A10 10 0 0 1 60 25 V23 A10 10 0 0 1 70 13 A10 10 0 0 1 78 17','M95 13 h4 a5 5 0 0 1 5 5 v1 a5 5 0 0 1 -5 5 h-4 a5 5 0 0 1 -5 -5 v-1 a5 5 0 0 1 5 -5 z M93 24 h8 a5 5 0 0 1 5 5 v1 a5 5 0 0 1 -5 5 h-8 a5 5 0 0 1 -5 -5 v-1 a5 5 0 0 1 5 -5 z','M115 35 V13 H124 A10 10 0 0 1 134 23 V25 A10 10 0 0 1 124 35 Z','M142 27 H159 V26.5 A7.5 7.5 0 0 0 151.5 19 H149.5 A7.5 7.5 0 0 0 142 26.5 V27.5 A7.5 7.5 0 0 0 149.5 35 H151.5 A7.5 7.5 0 0 0 156 33.5','M181.5 22 A7.5 7.5 0 0 0 175.5 19 H174.5 A7.5 7.5 0 0 0 167 26.5 V27.5 A7.5 7.5 0 0 0 174.5 35 H175.5 A7.5 7.5 0 0 0 181.5 32','M191 13 V35 M191 28 L203 19 M195 25 L205 35'],
   // Mode B alternative: svg:'<svg viewBox=...>...</svg>'  (pops + wipes in)
+ },
+ voice:{                     // narration (Kokoro TTS): voice id, speed, language, and how written words are spoken
+  voice:'af_heart', speed:1.0, lang:'en-us',
+  say:{ 'G8Deck':'Gate Deck' },   // confirmed pronunciation — add other product names only once confirmed
  },
  colors:{                    // from g8deck.com :root --color-* variables
   bg:'#080c10', panel:'#0e141a', panel2:'#151d25', field:'#0a1016', line:'#1f2a33', strong:'#2e3d49',
@@ -287,4 +293,64 @@ function s8(u){
  </div>`;
 }
 const FN=[s0,s1,s2,s3,s4,s5,s6,s7,s8];
+````
+
+<!-- file: examples/g8deck-first-deployment/narration.json -->
+````json
+{
+ "lines": [
+  {
+   "t": 1.0,
+   "text": "Your first deployment, with G8Deck."
+  },
+  {
+   "t": 4.8,
+   "text": "Connect a server you own: its address and an SSH key."
+  },
+  {
+   "t": 8.8,
+   "text": "Test the connection, and setup runs sixteen steps."
+  },
+  {
+   "t": 12.3,
+   "text": "Then create the application. Pick Git, add the repository, and choose a build preset."
+  },
+  {
+   "t": 18.3,
+   "text": "Next, describe what it needs, one choice at a time: runtime, database, cache, workers, and where it runs."
+  },
+  {
+   "t": 25.6,
+   "text": "That sentence becomes its shape."
+  },
+  {
+   "t": 28.8,
+   "text": "Each part gets its own node: entry, app, database, cache and storage."
+  },
+  {
+   "t": 33.4,
+   "text": "G8Deck wires them together."
+  },
+  {
+   "t": 36.4,
+   "text": "Review where it runs, let the guards check, then save and deploy."
+  },
+  {
+   "t": 42.3,
+   "text": "Twenty-four pipeline steps run. Skipped is not success, so read the amber rows."
+  },
+  {
+   "t": 49.3,
+   "text": "And it's live, on your own server, with TLS."
+  },
+  {
+   "t": 52.7,
+   "text": "Check domains, logs and health from the application."
+  },
+  {
+   "t": 56.6,
+   "text": "G8Deck. Deploy on infrastructure you own."
+  }
+ ]
+}
 ````

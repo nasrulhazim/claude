@@ -3,6 +3,26 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.11.0] - 2026-10-27
+
+### Added
+
+- Narration for `docs-explainer-video`: a timed `narration.json` beside `scenes.js` is voiced by a
+  local text-to-speech model (Kokoro, Apache-2.0, no API key), mixed over the music and SFX with the
+  music ducked under the voice and normalised to -16 LUFS. `render.sh` adds it automatically
+  (`--no-voice` to skip); `narrate.py` checks every line against its slot and stops the render on an
+  overrun, naming the line and how long it needs vs has
+- `BRAND.voice` in `brand.js` — default voice, speed, language and a `say` pronunciation map
+  (written name → spoken form, e.g. `G8Deck` → "Gate Deck"), exported into `timeline.json`
+- `references/narration-guide.md` — timing rules (≈2.5 words/s, 0.3s after a scene starts, 0.15s
+  gap), writing rules (say why, not what's on screen), voices, the no-Malay limit, and review steps
+- `/video voice` command; the bundled G8Deck example is now narrated
+
+### Changed
+
+- `setup.sh` also installs `soundfile` and `kokoro-onnx` and fetches the voice model once
+  (`SKIP_VOICE=1` to skip); `render.sh` accepts flags in any order after the resolution
+
 ## [2.10.0] - 2026-10-27
 
 ### Added

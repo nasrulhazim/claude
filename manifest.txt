@@ -30,6 +30,7 @@ skills/docs-explainer-video/SKILL.md
 skills/docs-explainer-video/references/brand-template.md
 skills/docs-explainer-video/references/brief-template.md
 skills/docs-explainer-video/references/example-g8deck.md
+skills/docs-explainer-video/references/narration-guide.md
 skills/docs-explainer-video/references/scene-patterns.md
 skills/docs-explainer-video/references/toolkit-audio.md
 skills/docs-explainer-video/references/toolkit-engine.md
