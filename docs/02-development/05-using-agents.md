@@ -8,7 +8,7 @@ its playbook, so knowledge stays in one place.
 
 ## SDLC Coverage Map
 
-The 20 agents cover every SDLC phase:
+The 23 agents cover every SDLC phase:
 
 | SDLC Phase | Agent(s) | Notes |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ The 20 agents cover every SDLC phase:
 | Architecture & design | software-architect | System/module design, DDD, API design, ADRs |
 | Data & database | database-engineer | Schema, migrations, indexing, integrity, backups, tenant isolation |
 | UI/UX design | ui-designer, brand-designer | Interfaces + brand identity |
-| Implementation (backend/frontend) | laravel-developer | Features end-to-end with tests (Laravel + Livewire/Flux) |
+| Implementation (backend/frontend) | laravel-developer, typescript-developer, go-developer, python-developer | Features end-to-end with tests — one agent per runtime (Laravel + Livewire/Flux; Next.js/React/extensions/Node; Go; Python) |
 | API design & build | api-engineer | REST, versioning, Resources, auth/scopes, rate limits, OpenAPI |
 | Testing (QA/QC) | qa-engineer | Test strategy (QA) + Pest tests until green (QC) |
 | Code review | code-reviewer | Read-only; Kickoff conventions, bugs, coverage gaps |
@@ -47,7 +47,8 @@ The 20 agents cover every SDLC phase:
 
 - **Feature:** project-manager (plan) → business-analyst
   (requirements) → software-architect + database-engineer
-  (design) → laravel-developer / api-engineer (build) →
+  (design) → laravel-developer / api-engineer, or the
+  runtime's developer agent (build) →
   code-reviewer + qa-engineer (verify) → devops-engineer
   (ship)
 - **Security assurance:** security-analyst (defensive

@@ -62,11 +62,12 @@ method, loaded on demand.
 
 ### Agent Roster
 
-20 role agents covering the full SDLC — requirements
+23 role agents covering the full SDLC — requirements
 (business-analyst), project management (project-manager),
 architecture (software-architect), data/database
 (database-engineer), design (ui-designer, brand-designer),
-implementation (laravel-developer), API (api-engineer),
+implementation (laravel-developer, typescript-developer,
+go-developer, python-developer), API (api-engineer),
 testing & QA/QC (qa-engineer), review (code-reviewer),
 defensive security (security-analyst), offensive security
 (penetration-tester), performance (performance-engineer),

@@ -3,6 +3,29 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.8.0] - 2026-10-27
+
+### Added
+
+- `typescript-developer` agent — TypeScript end-to-end for Next.js App Router (Server Components
+  by default, Server Actions re-validated as public endpoints, `NEXT_PUBLIC_*` hygiene), React +
+  Vite (derived state over effects), Manifest V3 extensions (ephemeral service worker, least
+  privilege, untrusted messages) and Node services; strict types with no `any`/`@ts-ignore`,
+  Testing Library queries by role, Vitest/Playwright gate
+- `go-developer` agent — idiomatic Go for workers, CLIs and HTTP services: `%w` wrapping with
+  `errors.Is/As`, context-first APIs, owned goroutines with graceful shutdown, consumer-side
+  interfaces, `log/slog`, server/client timeouts, table-driven tests; gofmt, vet, `-race`,
+  golangci-lint and govulncheck gate
+- `python-developer` agent — Python 3.12+ packaged CLIs and libraries: modern type hints,
+  dataclasses, logging in libraries vs printing in the CLI, lazily-imported optional extras,
+  `importlib.resources`, `yaml.safe_load`, no `shell=True`, Jinja2 autoescape; pytest
+  (parametrize, `tmp_path`), ruff and mypy/pyright gate
+
+### Changed
+
+- Implementation phase in the SDLC coverage map now has one developer agent per runtime;
+  ponytail wiring extended to the three new agents
+
 ## [2.7.0] - 2026-10-24
 
 ### Added

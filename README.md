@@ -91,13 +91,16 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 
 ## Agents Directory
 
-20 role agents — thin personas that load the skills above as their playbook, covering the full SDLC (see [Using Agents](docs/02-development/05-using-agents.md) for the coverage map). Reviewer, auditor and security roles are restricted to read-only tools.
+23 role agents — thin personas that load the skills above as their playbook, covering the full SDLC (see [Using Agents](docs/02-development/05-using-agents.md) for the coverage map). Reviewer, auditor and security roles are restricted to read-only tools.
 
 | Agent | Role |
 |---|---|
 | [software-architect](agents/software-architect.md) | System/module design, DDD boundaries, API design, ADRs, architectural review |
 | [database-engineer](agents/database-engineer.md) | Schema, migrations, indexing, integrity, backups, multi-tenant data isolation |
 | [laravel-developer](agents/laravel-developer.md) | Implements features end-to-end — models, Actions, Livewire/Flux, policies, tests |
+| [typescript-developer](agents/typescript-developer.md) | TypeScript end-to-end — Next.js App Router, React + Vite, MV3 extensions, Node; Vitest/Playwright |
+| [go-developer](agents/go-developer.md) | Go end-to-end — workers, CLIs, HTTP services; context, graceful shutdown, table-driven tests |
+| [python-developer](agents/python-developer.md) | Python end-to-end — packaged CLIs/libraries, typed, optional extras, pytest |
 | [api-engineer](agents/api-engineer.md) | REST API design & build — versioning, Resources, auth/scopes, rate limits, OpenAPI |
 | [code-reviewer](agents/code-reviewer.md) | Read-only Laravel code review — Kickoff conventions, patterns, security, test gaps |
 | [qa-engineer](agents/qa-engineer.md) | Test strategy (QA) + writes and repairs Pest tests until green (QC) |
@@ -182,7 +185,7 @@ current and keeps its own licence. Skip both with `--no-companions`.
 | Companion | Skills | Agents |
 |---|---|---|
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
-| ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer` |
+| ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer`, `typescript-developer`, `go-developer`, `python-developer` |
 
 Both are accelerators, not prerequisites — every skill falls back to its normal approach when
 the companion is absent, and the installer reports a skip rather than failing.
