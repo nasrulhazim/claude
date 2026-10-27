@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Claude Toolkit Installer — skills, agents and commands
-# Version: 2.9.0
+# Version: 2.10.0
 # Usage (remote): curl -fsSL https://raw.githubusercontent.com/nasrulhazim/claude/main/install.sh | bash
 # Usage (local):  bash install.sh [--dry-run] [--only <name>]
 #
@@ -35,7 +35,7 @@ done
 echo ""
 echo "Claude Toolkit Installer"
 echo "========================"
-echo "Version: 2.9.0"
+echo "Version: 2.10.0"
 [ $DRY_RUN -eq 1 ] && echo "(dry run — nothing will be written)"
 echo ""
 

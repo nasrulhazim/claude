@@ -120,6 +120,7 @@ Type the command in your Claude Code session.
 | `/logo-designer` | Professional logo with style control |
 | `/courseware-builder` | Interactive HTML courseware |
 | `/video plan` → `/video render 1080` | Docs page to branded explainer MP4 |
+| `/video series <docs-url>` | Whole docs site to a video series plan |
 
 #### Meta
 
@@ -231,6 +232,9 @@ Skills for non-code deliverables.
 - **docs-explainer-video** — Turns a docs page
   into a branded 60s explainer MP4 with synced
   music and SFX, rendered at 720p, 1080p or 4K
+- **docs-video-series** — Studies a whole docs
+  site and plans the video series: triage,
+  hooks, wave-1 scene sheets, shorts, roadmap
 
 ### Meta Skills
 

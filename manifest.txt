@@ -34,6 +34,11 @@ skills/docs-explainer-video/references/scene-patterns.md
 skills/docs-explainer-video/references/toolkit-audio.md
 skills/docs-explainer-video/references/toolkit-engine.md
 skills/docs-explainer-video/references/toolkit-scripts.md
+skills/docs-video-series/SKILL.md
+skills/docs-video-series/references/example-g8deck-series.md
+skills/docs-video-series/references/page-notes-template.md
+skills/docs-video-series/references/plan-template.md
+skills/docs-video-series/references/triage-rubric.md
 skills/gh-workflow/SKILL.md
 skills/gh-workflow/references/gh-actions-patterns.md
 skills/gh-workflow/references/gh-api-recipes.md

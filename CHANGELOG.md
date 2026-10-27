@@ -3,6 +3,18 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.10.0] - 2026-10-27
+
+### Added
+
+- `docs-video-series` skill — studies every page of a docs site and plans an explainer video
+  series: per-page notes in a fixed shape (sub-agent brief included), a top-down triage rubric
+  (video / merge / feeds / no video / hold), a series map in four series with hooks taken from
+  the pages' own warnings and a status column, nine-scene sheets for wave 1 only, beat outlines
+  for later waves, 9:16 gotcha shorts, a trailer, the scene patterns the engine still lacks, a
+  log of docs claims to confirm before filming, and a gated roadmap with no invented dates.
+  Plans what `docs-explainer-video` renders; ships a complete 29-page example
+
 ## [2.9.0] - 2026-10-27
 
 ### Added
