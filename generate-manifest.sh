@@ -13,13 +13,13 @@ MANIFEST="manifest.txt"
 for skill_dir in skills/*/; do
     [ -d "$skill_dir" ] || continue
     # List all files with the type prefix (e.g. skills/project-api/SKILL.md)
-    find "$skill_dir" -type f -name "*.md" | sort >> "$MANIFEST"
+    find "$skill_dir" -type f -name "*.md" | LC_ALL=C sort >> "$MANIFEST"
 done
 
 for dir in agents commands; do
     [ -d "$dir" ] || continue
     # Flat .md files, subdirectories allowed for namespaced commands
-    find "$dir" -type f -name "*.md" | sort >> "$MANIFEST"
+    find "$dir" -type f -name "*.md" | LC_ALL=C sort >> "$MANIFEST"
 done
 
 echo "Generated $MANIFEST ($(wc -l < "$MANIFEST" | tr -d ' ') files)"
