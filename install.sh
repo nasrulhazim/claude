@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Claude Toolkit Installer — skills, agents and commands
-# Version: 2.11.0
+# Version: 2.12.0
 # Usage (remote): curl -fsSL https://raw.githubusercontent.com/nasrulhazim/claude/main/install.sh | bash
 # Usage (local):  bash install.sh [--dry-run] [--only <name>]
 #
 # Flags:
 #   --dry-run            Show what would be installed/removed without writing anything
 #   --only <name>        Install a single skill, agent or command by name
-#   --no-companions      Skip the companion tools (graphify, ponytail)
+#   --no-companions      Skip the companion tools (graphify, ponytail, design skills)
 #   --no-output-format   Skip the TLDR+table output-format block in ~/.claude/CLAUDE.md
 #   --no-browser-rules   Skip the browser-sessions block in ~/.claude/CLAUDE.md
+#   --no-ui-sop          Skip the UI/UX SOP block in ~/.claude/CLAUDE.md
 
 set -e
 
@@ -20,6 +21,7 @@ ONLY=""
 COMPANIONS=1
 OUTPUT_FORMAT=1
 BROWSER_RULES=1
+UI_SOP=1
 while [ $# -gt 0 ]; do
     case "$1" in
         --dry-run) DRY_RUN=1 ;;
@@ -27,6 +29,7 @@ while [ $# -gt 0 ]; do
         --no-companions) COMPANIONS=0 ;;
         --no-output-format) OUTPUT_FORMAT=0 ;;
         --no-browser-rules) BROWSER_RULES=0 ;;
+        --no-ui-sop) UI_SOP=0 ;;
         *) echo "Unknown option: $1"; exit 1 ;;
     esac
     shift
@@ -35,7 +38,7 @@ done
 echo ""
 echo "Claude Toolkit Installer"
 echo "========================"
-echo "Version: 2.11.0"
+echo "Version: 2.12.0"
 [ $DRY_RUN -eq 1 ] && echo "(dry run — nothing will be written)"
 echo ""
 
@@ -284,10 +287,11 @@ install_managed_block() {
     echo -e "  ${GREEN}✓${NC} $label → ~/.claude/CLAUDE.md"
 }
 
-if [ $OUTPUT_FORMAT -eq 1 ] || [ $BROWSER_RULES -eq 1 ]; then
+if [ $OUTPUT_FORMAT -eq 1 ] || [ $BROWSER_RULES -eq 1 ] || [ $UI_SOP -eq 1 ]; then
     echo -e "${BLUE}Preferences${NC}"
     [ $OUTPUT_FORMAT -eq 1 ] && { install_managed_block "output-format" "output-format.md" "output format (TLDR + tables)" || true; }
     [ $BROWSER_RULES -eq 1 ] && { install_managed_block "browser" "browser-behavior.md" "browser sessions (never resize)" || true; }
+    [ $UI_SOP -eq 1 ] && { install_managed_block "ui-ux" "ui-ux-sop.md" "UI/UX SOP (load ui-ux-sop first)" || true; }
     echo ""
 fi
 
@@ -336,9 +340,31 @@ install_companions() {
     fi
 }
 
+# Design skills routed by ui-ux-sop — each from its own upstream via the skills CLI
+install_design_skills() {
+    local repo name
+    for repo in nextlevelbuilder/ui-ux-pro-max-skill:ui-ux-pro-max Leonxlnx/taste-skill:design-taste-frontend \
+                Dammyjay93/interface-design:interface-design pbakaus/impeccable:impeccable \
+                emilkowalski/skills:emil-design-eng shadcn-ui/ui:shadcn; do
+        name="${repo##*:}"; repo="${repo%%:*}"
+        if [ -d "$CLAUDE_DIR/skills/$name" ]; then
+            echo -e "  ${GREEN}✓${NC} $name (already installed)"
+        elif [ $DRY_RUN -eq 1 ]; then
+            echo -e "  ${BLUE}would install${NC} $name (npx skills add $repo)"
+        elif ! command -v npx >/dev/null 2>&1; then
+            echo -e "  ${YELLOW}!${NC} $name (needs Node — run: npx skills add $repo -g -y --agent claude-code)"
+        elif npx -y skills add "$repo" -g -y --agent claude-code >/dev/null 2>&1; then
+            echo -e "  ${GREEN}✓${NC} $name"
+        else
+            echo -e "  ${YELLOW}!${NC} $name (install failed — run: npx skills add $repo -g -y --agent claude-code)"
+        fi
+    done
+}
+
 if [ $COMPANIONS -eq 1 ] && [ -z "$ONLY" ]; then
     echo -e "${BLUE}Companions${NC}"
     install_companions
+    install_design_skills
     echo ""
 fi
 

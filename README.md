@@ -12,7 +12,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 ## Skills Directory
 
 <details open>
-<summary><strong>Development & Quality</strong> (10 skills)</summary>
+<summary><strong>Development & Quality</strong> (11 skills)</summary>
 
 | Skill | Description |
 |---|---|
@@ -26,6 +26,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | [debugging](skills/debugging/) | Five-step triage — reproduce, localise, reduce, fix at the root, guard with a regression test |
 | [performance-tuning](skills/performance-tuning/) | Measure-first optimisation — baselines, N+1s, indexing, caching tiers, queue offloading, Livewire payloads |
 | [ui-accessibility](skills/ui-accessibility/) | WCAG 2.1 AA for Livewire/Flux — keyboard paths, accessible names, contrast in both themes, live regions |
+| [ui-ux-sop](skills/ui-ux-sop/) | UI/UX SOP — classifies the surface, routes to at most three design skills, precedence when they disagree, one `DESIGN.md`, pre-delivery gate |
 
 </details>
 
@@ -173,14 +174,15 @@ is resized. Installed as its own managed block in `~/.claude/CLAUDE.md`; skip it
 
 ## Companions
 
-Two upstream tools are installed alongside the toolkit because several skills and agents
-assume them. Neither is vendored — each is installed through its own mechanism so it stays
-current and keeps its own licence. Skip both with `--no-companions`.
+Upstream tools are installed alongside the toolkit because several skills and agents
+assume them. None is vendored — each is installed through its own mechanism so it stays
+current and keeps its own licence. Skip all of them with `--no-companions`.
 
 | Companion | What it does | Installed via |
 |---|---|---|
 | [graphify](https://github.com/Graphify-Labs/graphify) | Turns a codebase into a queryable knowledge graph — structural questions answered in seconds instead of a grep sweep | `uv tool install graphifyy` then `graphify install --platform claude` |
 | [ponytail](https://github.com/dietrichgebert/ponytail) | Minimalism ladder applied to every response — skip it, reuse, stdlib, native, existing dep, one line, minimum that works | `/plugin marketplace add DietrichGebert/ponytail` then `/plugin install ponytail@ponytail` |
+| Design skills | The skills `ui-ux-sop` routes to: [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), [taste-skill](https://github.com/Leonxlnx/taste-skill), [interface-design](https://github.com/Dammyjay93/interface-design), [impeccable](https://github.com/pbakaus/impeccable), [emilkowalski/skills](https://github.com/emilkowalski/skills), [shadcn](https://github.com/shadcn-ui/ui) | `npx skills add <repo> -g -y --agent claude-code` (needs Node; skipped with a hint otherwise) |
 
 **Where they are wired in:**
 
@@ -188,6 +190,7 @@ current and keeps its own licence. Skip both with `--no-companions`.
 |---|---|---|
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
 | ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer`, `typescript-developer`, `go-developer`, `python-developer` |
+| Design skills | `ui-ux-sop` | `ui-designer` |
 
 Both are accelerators, not prerequisites — every skill falls back to its normal approach when
 the companion is absent, and the installer reports a skip rather than failing.
@@ -218,6 +221,7 @@ bash install.sh --dry-run                     # preview without writing
 bash install.sh --only kickoff-pest-testing   # install a single skill, agent or command
 bash install.sh --no-companions               # skip graphify and ponytail
 bash install.sh --no-output-format            # skip the TLDR+table block in ~/.claude/CLAUDE.md
+bash install.sh --no-ui-sop                   # skip the UI/UX SOP block in ~/.claude/CLAUDE.md
 bash install.sh --no-browser-rules            # skip the browser-sessions block in ~/.claude/CLAUDE.md
 ```
 

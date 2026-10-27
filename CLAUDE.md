@@ -66,7 +66,7 @@ migrations.txt                # Rename/removal mappings (legacy skill format + t
 - ✅ DO run `bash generate-manifest.sh` and update `README.md` when adding, renaming, or removing any skill, agent, or command
 - ✅ DO update `migrations.txt` when renaming or removing anything
 - ✅ DO bump the version in `install.sh`, `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` together when tagging a release
-- ✅ DO keep companions (graphify, ponytail) referenced, never vendored — each installs from upstream via `install_companions()` in `install.sh`
+- ✅ DO keep companions (graphify, ponytail, design skills) referenced, never vendored — each installs from upstream via `install_companions()` in `install.sh`
 - ❌ DON'T make a companion a hard requirement — every skill that mentions one must state its fallback when the companion is absent
 - ❌ DON'T rename anything without a migration entry — users will have stale copies in `~/.claude/`
 
@@ -114,13 +114,14 @@ from a procedure that actually terminates correctly.
 
 ## Companions
 
-`graphify` and `ponytail` are installed by `install.sh` from their own upstreams and referenced
-from the skills and agents that use them. Neither is copied into this repo. Wiring:
+`graphify`, `ponytail` and the design skills are installed by `install.sh` from their own upstreams and referenced
+from the skills and agents that use them. None is copied into this repo. Wiring:
 
 | Companion | Skills | Agents |
 |---|---|---|
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
 | ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer`, `typescript-developer`, `go-developer`, `python-developer` |
+| Design skills (ui-ux-pro-max, taste, interface-design, impeccable, emilkowalski/skills, shadcn) | `ui-ux-sop` | `ui-designer` |
 
 ## Managed Preference Blocks
 
@@ -133,8 +134,9 @@ touching the user's own instructions. Each block has its own opt-out flag.
 |---|---|---|---|
 | `output-format` | `templates/output-format.md` | `--no-output-format` | Default **TLDR + tables**; `/output <mode>` switches per session |
 | `browser` | `templates/browser-behavior.md` | `--no-browser-rules` | Never resize the browser window — user's real screen size, full screen stays full screen, unless their prompt asks otherwise |
+| `ui-ux` | `templates/ui-ux-sop.md` | `--no-ui-sop` | Any UI/UX work loads the `ui-ux-sop` skill first; subagents are briefed to do the same |
 
-Adding a third block = one new template file + one `install_managed_block` call + its flag.
+Adding another block = one new template file + one `install_managed_block` call + its flag.
 
 > **Gotcha:** these blocks live in the *user's* `~/.claude/CLAUDE.md`, not this repo's.
 > Editing a template only takes effect after the user reinstalls.

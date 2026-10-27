@@ -171,6 +171,8 @@ skills/svg-logo-system/references/preview-mockup-template.md
 skills/ui-accessibility/SKILL.md
 skills/ui-accessibility/references/flux-accessibility.md
 skills/ui-accessibility/references/wcag-checklist.md
+skills/ui-ux-sop/SKILL.md
+skills/ui-ux-sop/references/design-skills.md
 agents/api-engineer.md
 agents/brand-designer.md
 agents/business-analyst.md

@@ -6,14 +6,14 @@
     },
     "metadata": {
         "description": "A complete Claude Code toolkit \u2014 skills, agents and commands for Laravel developers, solo founders and package authors.",
-        "version": "2.11.0"
+        "version": "2.12.0"
     },
     "plugins": [
         {
             "name": "claude-toolkit",
             "source": "./",
-            "description": "40 skills, 23 role agents and 12 commands covering Laravel, TypeScript, Go and Python development, testing, debugging, code quality, performance, accessibility, security hardening, CI/CD, deployment, package development, documentation, requirements, sales, branding, narrated explainer video and video-series planning and support operations. Kickoff-baseline aware. Ships graphify and ponytail as companions and a TLDR+table output default.",
-            "version": "2.11.0",
+            "description": "41 skills, 23 role agents and 12 commands covering Laravel, TypeScript, Go and Python development, testing, debugging, code quality, performance, accessibility, security hardening, CI/CD, deployment, package development, documentation, requirements, sales, branding, narrated explainer video and video-series planning and support operations. Kickoff-baseline aware. Ships graphify, ponytail and a routed set of design skills as companions, a UI/UX SOP and a TLDR+table output default.",
+            "version": "2.12.0",
             "author": {
                 "name": "CleaniqueCoders"
             },

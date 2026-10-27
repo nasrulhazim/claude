@@ -3,6 +3,26 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.12.0] - 2026-10-27
+
+### Added
+
+- `ui-ux-sop` skill — the one entry point for UI/UX work: classifies the surface (page, app
+  screen, component, motion, review), routes it to at most three design skills, sets precedence
+  when they disagree (brief → `DESIGN.md` → accessibility floor → primary skill → data), keeps a
+  single `DESIGN.md` as design memory, applies house overrides (never resize the browser) and
+  ends with a pre-delivery gate. `references/design-skills.md` compares the routed skills against
+  ui-ux-pro-max and carries hand-applied fallback rules for any that are missing
+- `ui-ux` managed block in `~/.claude/CLAUDE.md` (`templates/ui-ux-sop.md`, opt out with
+  `--no-ui-sop`): load `ui-ux-sop` before any UI work, and brief subagents to do the same
+- Design skills as companions, installed from upstream with `npx skills add`: ui-ux-pro-max,
+  taste-skill, interface-design, impeccable, emilkowalski/skills, shadcn
+
+### Changed
+
+- `ui-designer` agent loads `ui-ux-sop` first instead of choosing among design skills itself;
+  `frontend-design` and `bencium-controlled-ux-designer` retired from routing
+
 ## [2.11.0] - 2026-10-27
 
 ### Added
