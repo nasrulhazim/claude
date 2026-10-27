@@ -3,6 +3,21 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.9.0] - 2026-10-27
+
+### Added
+
+- `docs-explainer-video` skill — turns a documentation page into a branded ~60s explainer video
+  with music and SFX synced to the picture, rendered to 720p, 1080p or 4K MP4. Nine scene
+  patterns (title, wizard form, single-path form, word-by-word sentence builder with in-place
+  pickers, topology diagram with flowing packets, review with guards, pipeline, "it's live"
+  browser scene, end card); real logo, colour variables and fonts read from the product's live
+  site; every frame a pure function of time in headless Chromium; a seeded, licence-free music
+  bed and SFX synthesised from the same timeline. The engine, render/audio scripts, starter
+  brand and a complete G8Deck example ship as marked blocks in `references/toolkit-*.md` and
+  unpack with one command, so the skill installs through the markdown-only manifest and works
+  in assistants without a shell (they produce the project; the user renders locally)
+
 ## [2.8.0] - 2026-10-27
 
 ### Added

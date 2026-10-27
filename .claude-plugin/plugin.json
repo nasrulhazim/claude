@@ -1,7 +1,7 @@
 {
     "name": "claude-toolkit",
-    "description": "38 skills, 23 role agents and 12 commands covering Laravel, TypeScript, Go and Python development, testing, debugging, code quality, performance, accessibility, security hardening, CI/CD, deployment, package development, documentation, requirements, sales, branding and support operations. Kickoff-baseline aware. Ships graphify and ponytail as companions and a TLDR+table output default.",
-    "version": "2.8.0",
+    "description": "39 skills, 23 role agents and 12 commands covering Laravel, TypeScript, Go and Python development, testing, debugging, code quality, performance, accessibility, security hardening, CI/CD, deployment, package development, documentation, requirements, sales, branding, explainer video and support operations. Kickoff-baseline aware. Ships graphify and ponytail as companions and a TLDR+table output default.",
+    "version": "2.9.0",
     "author": {
         "name": "CleaniqueCoders"
     },

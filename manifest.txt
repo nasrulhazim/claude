@@ -26,6 +26,14 @@ skills/design-patterns/references/laravel-patterns.md
 skills/design-patterns/references/pattern-catalog.md
 skills/dev-summary/SKILL.md
 skills/dev-summary/references/git-commands.md
+skills/docs-explainer-video/SKILL.md
+skills/docs-explainer-video/references/brand-template.md
+skills/docs-explainer-video/references/brief-template.md
+skills/docs-explainer-video/references/example-g8deck.md
+skills/docs-explainer-video/references/scene-patterns.md
+skills/docs-explainer-video/references/toolkit-audio.md
+skills/docs-explainer-video/references/toolkit-engine.md
+skills/docs-explainer-video/references/toolkit-scripts.md
 skills/gh-workflow/SKILL.md
 skills/gh-workflow/references/gh-actions-patterns.md
 skills/gh-workflow/references/gh-api-recipes.md

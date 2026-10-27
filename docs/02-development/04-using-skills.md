@@ -119,6 +119,7 @@ Type the command in your Claude Code session.
 | `/logo` | Design SVG logo system |
 | `/logo-designer` | Professional logo with style control |
 | `/courseware-builder` | Interactive HTML courseware |
+| `/video plan` → `/video render 1080` | Docs page to branded explainer MP4 |
 
 #### Meta
 
@@ -227,6 +228,9 @@ Skills for non-code deliverables.
 - **courseware-builder** — Transforms technical
   topics into interactive HTML slide decks with
   animated diagrams and code examples
+- **docs-explainer-video** — Turns a docs page
+  into a branded 60s explainer MP4 with synced
+  music and SFX, rendered at 720p, 1080p or 4K
 
 ### Meta Skills
 

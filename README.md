@@ -76,7 +76,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 </details>
 
 <details>
-<summary><strong>Business & Design</strong> (6 skills)</summary>
+<summary><strong>Business & Design</strong> (7 skills)</summary>
 
 | Skill | Description |
 |---|---|
@@ -86,6 +86,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control |
 | [courseware-builder](skills/courseware-builder/) | Interactive HTML courseware builder with animated diagrams |
+| [docs-explainer-video](skills/docs-explainer-video/) | Docs page to a branded 60s explainer MP4 (720p/1080p/4K) — real logo and colours from the live site, word-by-word config scenes, topology diagram, "it's live" browser scene, music and SFX synced from the same timeline; vendor-neutral |
 
 </details>
 
