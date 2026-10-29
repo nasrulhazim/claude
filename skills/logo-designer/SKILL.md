@@ -2,7 +2,7 @@
 name: logo-designer
 metadata:
   compatible_agents: [claude-code]
-  tags: [design, svg, logo, mascot, emblem, lettermark, icon, branding, golden-ratio]
+  tags: [design, svg, logo, mascot, emblem, lettermark, icon, branding, golden-ratio, print, embroidery, merchandise]
 description: >
   Professional SVG logo designer with granular control over logo category, color palette, container
   frame, and rendering style. Produces 25 SVG concepts (5 concepts x 5 variations), interactive grid
@@ -285,6 +285,21 @@ From the chosen final logo, generate:
 - Optimized paths (remove unnecessary decimals, merge compatible paths)
 - Self-contained (no external dependencies)
 
+
+### 3.1b Production Readiness
+
+Before calling the logo final, follow `references/production-readiness.md`:
+
+- Make three mark levels: **full** (48 px+), **simplified** (24–47 px, embroidery, deboss) and
+  **micro** (favicon). Mascots and emblems usually need a simplified silhouette at the small levels.
+- Make mono variants as true **knockouts** (holes, not white fills) and a **stacked** lockup.
+- Run the size test per medium from the mark's smallest feature: favicon, app icons, embroidery
+  (cap, left chest), pad print, laser engraving, deboss, screen print. Fix failures in the
+  geometry, never by lowering the threshold.
+- Check contrast (text 4.5:1, graphics 3:1, on light and dark), run the squint, greyscale,
+  one-colour and reversal tests, and write the colour spec (HEX, CMYK start; Pantone and thread
+  picked from physical guides).
+
 ### 3.2 Build Final Preview Page
 
 Create `logo-preview.html` with real-world mockup sections:
@@ -295,6 +310,7 @@ Create `logo-preview.html` with real-world mockup sections:
 4. **Navigation mockup** — dark and light nav bar with logo
 5. **Social media avatar** — circular crop at profile picture sizes
 6. **Brand color palette** — swatches with hex codes
+7. **Production** — size-test table, knockout and stacked variants on garment colours (white, black, navy, heather, brand colour)
 
 ### 3.3 Export Assets Summary
 
@@ -384,4 +400,5 @@ The monochrome style from the reference images uses these specific techniques:
 | `references/gallery-grid-template.md` | HTML template for Phase 1 grid gallery (dark bg, 5x5 layout) |
 | `references/individual-showcase-template.md` | HTML template for individual logo showcase (branded bg) |
 | `references/svg-design-patterns.md` | SVG code patterns for each rendering style |
+| `references/production-readiness.md` | Mark levels, knockouts, stacked lockup, colour spec, size tests per medium, perception tests, vendor pack |
 | `references/golden-ratio-construction.md` | φ rules, Python helpers, construction drawing and ratio check for every logo |
