@@ -2,7 +2,7 @@
 name: svg-logo-system
 metadata:
   compatible_agents: [claude-code]
-  tags: [design, svg, logo, branding, favicon, export]
+  tags: [design, svg, logo, branding, favicon, export, golden-ratio]
 description: >
   Complete SVG logo system designer that takes a brand brief and produces 25 diverse logo concepts,
   dark/light wordmarks, icon marks, interactive HTML preview galleries, real-world mockup pages,
@@ -11,7 +11,8 @@ description: >
   a product, company, or project — even if they just say "design me a logo for X" or "I need a
   logo". Also triggers for refinement tasks like "improve my logo", "generate icon alternatives",
   or "export my logo for all platforms". For Laravel projects, auto-deploys to Blade components
-  and public/ directory. Outputs follow the same file structure as the nasrulhazim/claude-design-logo
+  and public/ directory. Every logo is constructed on the golden ratio (golden rectangle outer
+  shape, φ-stepped proportions, lockup, clear space and icon padding). Outputs follow the same file structure as the nasrulhazim/claude-design-logo
   Claude Code slash command.
 ---
 
@@ -116,6 +117,9 @@ Generate exactly **25 diverse SVG logo concepts** and save them as individual `.
 - Every concept must be self-contained and render correctly as a standalone SVG
 - Use the project's color map from Phase 0 — not hardcoded defaults
 - Include a background `<rect>` in concepts (for preview), but production SVGs must NOT
+- Golden ratio: the mark's box is 1:1 or 1:φ, radii and repeated parts step by φ, and the lockup
+  uses wordmark ink height = mark height ÷ φ with a gap of mark height ÷ φ³
+  (`references/golden-ratio-construction.md`)
 
 **Inline the fill colors** — do not rely on `currentColor` unless explicitly designing for theming.
 
@@ -183,6 +187,8 @@ Rules:
 - Maintain consistent stroke weights and spacing between dark/light pairs
 - Light versions should use darker fills (e.g. `--dark-bg` for text) instead of light fills
 - Use unique gradient IDs per file to avoid conflicts when multiple logos appear on same page
+- Re-derive every dimension from φ in code; add `logo-construction.svg` (golden rectangle and the
+  mark's guides) and keep the ratio report; icons place the mark at tile ÷ φ
 
 ### 2.3 Build Comprehensive Preview Page
 
@@ -360,6 +366,7 @@ resources/views/partials/
 - **No bg rect in production** — only concept SVGs include background for standalone preview
 - **Consistent palette** — derive all tints/shades from the project's brand colors
 - **Unique gradient IDs** — avoid conflicts when multiple SVGs on same page
+- **Golden ratio** — 1:1 or 1:φ box, φ-stepped radii and rhythm, φ lockup, clear space mark ÷ φ², icon mark = tile ÷ φ
 
 ---
 
@@ -384,3 +391,4 @@ These rules exist to avoid slow, repetitive workflows:
 |---|---|
 | `references/preview-gallery-template.md` | Building the Phase 1 gallery — HTML/JS template |
 | `references/preview-mockup-template.md` | Building the Phase 2 mockup page — HTML structure |
+| `references/golden-ratio-construction.md` | Constructing every concept and production file on φ; construction drawing; ratio check |

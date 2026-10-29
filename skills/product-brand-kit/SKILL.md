@@ -2,11 +2,13 @@
 name: product-brand-kit
 metadata:
   compatible_agents: [claude-code]
-  tags: [branding, naming, logo, design-system, landing-page, photography, marketing, print, social-media, export, whatsapp]
+  tags: [branding, naming, logo, golden-ratio, design-system, landing-page, photography, marketing, print, social-media, export, whatsapp]
 description: >
   Takes a scoped product from name to launch-ready identity and launch material in one run: naming
   options that keep an internal code name apart from the public brand, a logo concept drawn from
-  the product's own metaphor with the wordmark built from real font outlines (never SVG text), a
+  the product's own metaphor, constructed on the golden ratio (golden rectangle outer shape, φ-stepped
+  proportions, φ lockup, clear space and icon padding) with the wordmark built from real font outlines
+  (never SVG text), a
   brand kit with contrast-checked light and dark colour tokens, type, a brand book and
   product-specific components, domain advice that avoids paying for premium exact matches before
   revenue, a licensed and art-directed photo set from Unsplash, Pexels, Openverse or the user's own
@@ -18,8 +20,8 @@ description: >
   backdrop, brochure, stickers, merchandise) with bleed, QR and UTM rules. Use this skill whenever
   the user asks to "name this product", "design the logo and brand kit", "make a landing page",
   "find photos for the landing page", "which domain should I buy", "export the logo in all sizes",
-  "logo for the WhatsApp group", "create marketing materials", "social media posts for the launch",
-  "design a flyer / bunting / roll-up banner", "cadangkan nama produk", "reka logo dan brand kit",
+  "logo for the WhatsApp group", "use the golden ratio for the logo", "create marketing materials", "social media posts for the launch",
+  "design a flyer / bunting / roll-up banner", "cadangkan nama produk", "reka logo dan brand kit", "guna nisbah emas untuk logo",
   "buat landing page", "cari gambar untuk landing page", "domain mana patut beli", "bagi logo semua
   saiz", "buat bahan marketing", "buat post media sosial", or "reka flyer dan bunting". Runs after
   product-blueprint; use svg-logo-system or logo-designer to explore many logo concepts first, and
@@ -38,7 +40,7 @@ single piece.
 | Command | Description |
 |---|---|
 | `/brand name` | Naming options: code name vs public brand, with one pick |
-| `/brand logo` | Logo concept, wordmark from font outlines, all variants, contact sheet |
+| `/brand logo` | Logo concept on the golden ratio, wordmark from font outlines, all variants, construction drawing, contact sheet |
 | `/brand kit` | Colour and type tokens, brand book, components, cover |
 | `/brand domain` | Domain recommendation and the migration plan for moving domains later |
 | `/brand photos` | Art-directed, licensed photo set per slot, with a credits file |
@@ -75,15 +77,25 @@ single piece.
 
 1. Draw the concept from the product's own metaphor and make one element stand for something true
    about the product. Example: four shutter blades for four publishing platforms.
-2. Build the wordmark from real glyph outlines and generate the mark's geometry in code
+2. Construct the mark on the golden ratio (`references/golden-ratio-construction.md`):
+   - **outer shape**: a square or a 1:φ golden rectangle
+   - **proportions**: every radius, bar height and width-to-gap step comes from one φ scale
+   - **lockup**: wordmark ink height = mark height ÷ φ, gap = mark height ÷ φ³
+   - **clear space** = mark height ÷ φ²; **app icon** mark = tile ÷ φ
+   Derive each dimension from φ in code, never by eye, and keep the ratio report.
+3. Build the wordmark from real glyph outlines and generate the mark's geometry in code
    (`references/logo-build-pipeline.md`). Never ship `<text>` in a logo SVG. It falls back to
    whatever font the viewer has.
-3. Produce the variants:
+4. Produce the variants:
    - wordmark: colour, reversed, mono-ink
    - mark: colour, mono-ink, mono-paper
    - app icon: dark tile and light tile
-4. Render a contact sheet on light, dark and at 16–28 px. Look once. Fix strokes that poke out,
+5. Render the construction drawing (golden rectangle and the mark's guides over a ghosted mark)
+   and a contact sheet on light, dark and at 16–28 px. Look once. Fix strokes that poke out,
    blades that vanish and colour-on-colour clashes.
+6. Present several concepts side by side when the user asks for options: one board per concept with
+   the colour and reversed lockups, the construction drawing, the app icon at 112/32/16 px, and
+   meaning · why it fits · watch out.
 
 ## Step 3: Brand Kit
 
@@ -163,6 +175,7 @@ Output:
 
 | Rationalization | Reality |
 |---|---|
+| "The proportions look balanced, no need for φ" | "Looks balanced" can't be checked or repeated. Derive the box, radii, bar steps, lockup and padding from φ and keep the ratio report, so the next revision lands on the same grid. |
 | "SVG `<text>` with the brand font is fine" | Inside `<img>`, on another machine, or in a PNG export, the font isn't there and the wordmark changes shape. Outline the glyphs. |
 | "Yellow on yellow works if we add an outline" | An outline is a patch for the wrong file. Use the mono-ink variant on brand-colour grounds. |
 | "The colours look readable" | Contrast is a number. A muted grey that looks fine on a laptop fails 4.5:1 on a phone in sunlight. Run the check. |
@@ -178,6 +191,8 @@ Output:
 
 ## Red Flags
 
+- A mark's aspect ratio is neither 1.000 nor 1.618, or the lockup's ink/gap/clear ratios aren't 0.618/0.236/0.382
+- No construction drawing ships with the chosen logo
 - A logo SVG contains `<text>` or references a web font
 - A mark's strokes extend past its disc or tile at large sizes
 - The colour mark is used on the brand-colour background in any export
@@ -195,6 +210,8 @@ Output:
 ## Verification
 
 - [ ] Code name and public brand are recorded separately
+- [ ] Mark box is 1:1 or 1:φ; radii, bar steps, lockup, clear space and icon padding come from φ (ratio report kept)
+- [ ] A construction drawing ships with the logo and the brand book has a Construction subsection
 - [ ] Wordmark glyphs are paths; the contact sheet was rendered and looked at once
 - [ ] Every text token pair passes 4.5:1 in both themes (script output kept)
 - [ ] Brand book covers story, voice, logo rules, colour, type, layout, photography, iconography, motion
@@ -214,6 +231,7 @@ Output:
 | File | Read When |
 |---|---|
 | `references/naming-patterns.md` | Proposing names, judging connotations, recommending a domain and its migration plan |
+| `references/golden-ratio-construction.md` | Constructing the mark, lockup, clear space and icon on φ; construction drawing; ratio check |
 | `references/logo-build-pipeline.md` | Building the wordmark from font outlines and generating the mark geometry |
 | `references/brand-book-outline.md` | Writing tokens, the brand book sections and the component set |
 | `references/photo-sourcing.md` | Choosing photo sources, the art-direction brief, slots, downloading, treatment and credits |

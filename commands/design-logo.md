@@ -42,6 +42,8 @@ Create diverse designs as `tinker/logo-{nn}-{name}.svg`:
 - All use `200x200` viewBox
 - Use the chosen color scheme consistently
 - Name each file descriptively (e.g., `logo-01-shield-leaf.svg`, `logo-14-wordmark-bold.svg`)
+- Construct every concept on the golden ratio (φ ≈ 1.618): a 1:1 or 1:φ box, radii and repeated parts
+  stepping by φ, wordmark ink height = mark height ÷ φ, gap = mark height ÷ φ³
 
 ### Step 4 — Create Preview Gallery
 
@@ -69,6 +71,10 @@ For the chosen design, create:
 | `tinker/logo-light.svg`     | Full wordmark for light backgrounds |
 | `tinker/logo-icon-dark.svg` | Icon mark for dark backgrounds      |
 | `tinker/logo-icon-light.svg`| Icon mark for light backgrounds     |
+| `tinker/logo-construction.svg` | Golden-ratio construction drawing |
+
+Keep the golden-ratio rules on every variant: clear space = mark height ÷ φ², and in app icons the
+mark's longest side = tile ÷ φ.
 
 ### Step 7 — Build Comprehensive Preview
 
