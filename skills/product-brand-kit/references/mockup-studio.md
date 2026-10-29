@@ -20,6 +20,8 @@ pill from `production-readiness.md` when one exists.
 
 ## Which Variant Goes Where
 
+Positions and sizes per item are in `logo-placement.md`; this table covers variants only.
+
 | Item | Variant | Never |
 |---|---|---|
 | Light garment, mug, flyer header on white | Colour lockup | — |

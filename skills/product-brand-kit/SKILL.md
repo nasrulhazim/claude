@@ -177,7 +177,9 @@ check, Apparel, Print, Merchandise and Digital**.
 - **Digital:** web app with favicon, mobile home screen and splash, laptop screen and lid
 
 Use real blank product photos when the environment can fetch them (photo mode); otherwise build
-the SVG items and say so. Each card names the technique, variant and real size, with its size-test
+the SVG items and say so. Position every logo by `references/logo-placement.md`: pick front-facing
+photos, measure reference points (centre front, 2nd button, crown seam, card corners), place at
+the standard position and real size, and add a zoomed inset for small placements such as the left chest. Each card names the technique, variant and real size, with its size-test
 result. Render each tab once and fix what spills or clips before publishing.
 
 ## Step 9: Export Pack
@@ -243,6 +245,8 @@ Output:
 - A print file has no bleed, text sits outside the safe area, or a QR is smaller than 20 mm
 - A size test was passed by lowering its threshold, or a medium has no test
 - The colour mark appears on the brand-colour ground in a mockup (cap, flag, box side)
+- A logo floats on a crumpled or angled garment, sits off the left-chest or cap-front position, or
+  ignores the item's real-world size
 - A mockup texture or logo spills outside the item, or an item is drawn at the wrong proportions
 - A Pantone or thread code appears that nobody picked from a physical guide
 - Marketing copy contradicts the message house or makes a claim the landing page doesn't
@@ -263,6 +267,7 @@ Output:
 - [ ] Mono variants are true knockouts; a stacked lockup exists
 - [ ] Colour spec lists HEX and CMYK start, with Pantone and thread marked for physical matching
 - [ ] Mockup studio covers apparel, print, merchandise, packaging and digital, and states photo or drawn mode
+- [ ] Every mockup passed the placement review in `references/logo-placement.md` (position, size, axis, no other brands)
 - [ ] Export zip holds SVG masters, transparent PNGs, app icons 16–1024, favicon.ico, OG image,
       circle-safe avatars at 640 and 1080, and a README naming which file goes where
 - [ ] Message house exists, in EN and BM when local; each marketing piece traces to it
@@ -279,6 +284,7 @@ Output:
 | `references/naming-patterns.md` | Proposing names, judging connotations, recommending a domain and its migration plan |
 | `references/golden-ratio-construction.md` | Constructing the mark, lockup, clear space and icon on φ; construction drawing; ratio check |
 | `references/production-readiness.md` | Mark levels, knockout and stacked variants, colour spec, size tests by medium, perception tests, vendor pack, legal |
+| `references/logo-placement.md` | Where the logo goes on each apparel, print, merch and digital item, at what size, in which variant; the placement review |
 | `references/mockup-studio.md` | Building the mockup page: apparel, print, merchandise, packaging, digital; photo mode and SVG fallback; material filters |
 | `references/logo-build-pipeline.md` | Building the wordmark from font outlines and generating the mark geometry |
 | `references/brand-book-outline.md` | Writing tokens, the brand book sections and the component set |
