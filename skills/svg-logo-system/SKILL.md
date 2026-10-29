@@ -2,7 +2,7 @@
 name: svg-logo-system
 metadata:
   compatible_agents: [claude-code]
-  tags: [design, svg, logo, branding, favicon, export, golden-ratio]
+  tags: [design, svg, logo, branding, favicon, export, golden-ratio, print, embroidery, merchandise]
 description: >
   Complete SVG logo system designer that takes a brand brief and produces 25 diverse logo concepts,
   dark/light wordmarks, icon marks, interactive HTML preview galleries, real-world mockup pages,
@@ -200,6 +200,10 @@ Create `logo-preview.html` with real-world mockup sections:
 4. **Favicon sizes** — 64px, 32px, 16px side by side (dark and light bg)
 5. **Footer placement** — footer strip with logo
 6. **Brand color palette** — swatches with hex codes, names from the Phase 0 color map
+7. **Production check** — mark levels (full, simplified, micro), knockout and stacked variants,
+   size-test table per medium and the colour spec (`references/production-readiness.md`)
+8. **On products** — tee (light and dark), cap, mug, packaging box, laptop lid; real blank
+   product photos when reachable, drawn SVG items otherwise
 
 Use the project's `--dark-bg` color (not hardcoded `#0B1120`) for all dark mockup sections.
 
@@ -366,6 +370,7 @@ resources/views/partials/
 - **No bg rect in production** — only concept SVGs include background for standalone preview
 - **Consistent palette** — derive all tints/shades from the project's brand colors
 - **Unique gradient IDs** — avoid conflicts when multiple SVGs on same page
+- **Production-ready** — full/simplified/micro marks, knockout mono, size tests per medium pass, colour spec with CMYK start
 - **Golden ratio** — 1:1 or 1:φ box, φ-stepped radii and rhythm, φ lockup, clear space mark ÷ φ², icon mark = tile ÷ φ
 
 ---
@@ -391,4 +396,5 @@ These rules exist to avoid slow, repetitive workflows:
 |---|---|
 | `references/preview-gallery-template.md` | Building the Phase 1 gallery — HTML/JS template |
 | `references/preview-mockup-template.md` | Building the Phase 2 mockup page — HTML structure |
+| `references/production-readiness.md` | Mark levels, knockouts, colour spec, size tests per medium, perception tests, vendor pack |
 | `references/golden-ratio-construction.md` | Constructing every concept and production file on φ; construction drawing; ratio check |

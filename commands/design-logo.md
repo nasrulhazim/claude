@@ -90,6 +90,9 @@ Create `tinker/logo-preview.html` with these sections:
 8. **Footer mockup** — Logo in footer context
 9. **On colored backgrounds** — Brand color, slate, gray, tinted
 10. **Brand color palette** — With hex codes displayed
+11. **Production check** — full, simplified and micro marks; knockout mono; size tests for favicon,
+    app icon, embroidery, pad print, engraving and deboss (smallest feature at real size)
+12. **On products** — tee, cap, mug, packaging box, web app tab, phone home screen, laptop lid
 
 ## Phase 3: Iteration
 

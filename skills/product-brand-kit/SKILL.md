@@ -2,7 +2,7 @@
 name: product-brand-kit
 metadata:
   compatible_agents: [claude-code]
-  tags: [branding, naming, logo, golden-ratio, design-system, landing-page, photography, marketing, print, social-media, export, whatsapp]
+  tags: [branding, naming, logo, golden-ratio, design-system, landing-page, photography, marketing, print, social-media, export, whatsapp, mockup, merchandise, apparel, packaging]
 description: >
   Takes a scoped product from name to launch-ready identity and launch material in one run: naming
   options that keep an internal code name apart from the public brand, a logo concept drawn from
@@ -12,7 +12,10 @@ description: >
   brand kit with contrast-checked light and dark colour tokens, type, a brand book and
   product-specific components, domain advice that avoids paying for premium exact matches before
   revenue, a licensed and art-directed photo set from Unsplash, Pexels, Openverse or the user's own
-  shoots with a credits file, a marketing landing page with no invented claims, a logo export pack
+  shoots with a credits file, a marketing landing page with no invented claims, a production check (full, simplified and micro
+  marks, knockout and stacked variants, colour spec, minimum-detail tests for embroidery, pad print,
+  engraving, deboss, screen print and icons), a mockup studio showing the logo on apparel, print,
+  merchandise, packaging and the product on laptop, tablet and phone (real product photos when reachable), a logo export pack
   in every size and format (SVG, transparent PNGs, app icons, favicon.ico, Open Graph image,
   circle-safe WhatsApp/social avatars), and a marketing kit covering digital material (message
   house, social post set, captions, carousel, video script, email, WhatsApp broadcast, blog,
@@ -20,10 +23,11 @@ description: >
   backdrop, brochure, stickers, merchandise) with bleed, QR and UTM rules. Use this skill whenever
   the user asks to "name this product", "design the logo and brand kit", "make a landing page",
   "find photos for the landing page", "which domain should I buy", "export the logo in all sizes",
-  "logo for the WhatsApp group", "use the golden ratio for the logo", "create marketing materials", "social media posts for the launch",
+  "logo for the WhatsApp group", "use the golden ratio for the logo", "is the logo ready for print and embroidery",
+  "show the logo on t-shirts, mugs, packaging and the app", "create marketing materials", "social media posts for the launch",
   "design a flyer / bunting / roll-up banner", "cadangkan nama produk", "reka logo dan brand kit", "guna nisbah emas untuk logo",
   "buat landing page", "cari gambar untuk landing page", "domain mana patut beli", "bagi logo semua
-  saiz", "buat bahan marketing", "buat post media sosial", or "reka flyer dan bunting". Runs after
+  saiz", "logo boleh print dan sulam tak", "buat mockup baju, mug, kotak dan app", "buat bahan marketing", "buat post media sosial", or "reka flyer dan bunting". Runs after
   product-blueprint; use svg-logo-system or logo-designer to explore many logo concepts first, and
   business-card for name cards.
 ---
@@ -45,6 +49,8 @@ single piece.
 | `/brand domain` | Domain recommendation and the migration plan for moving domains later |
 | `/brand photos` | Art-directed, licensed photo set per slot, with a credits file |
 | `/brand landing` | Marketing landing page using the kit and photo set |
+| `/brand production` | Mark levels, knockout and stacked variants, colour spec, size tests by medium, vendor pack |
+| `/brand mockups` | Mockup studio: apparel, print, merchandise, packaging and digital (laptop, tablet, phone) |
 | `/brand export` | Every logo size and format, zipped, with the WhatsApp/social avatar called out |
 | `/brand marketing` | Message house, then digital and print marketing pieces and a launch calendar |
 
@@ -86,10 +92,11 @@ single piece.
 3. Build the wordmark from real glyph outlines and generate the mark's geometry in code
    (`references/logo-build-pipeline.md`). Never ship `<text>` in a logo SVG. It falls back to
    whatever font the viewer has.
-4. Produce the variants:
-   - wordmark: colour, reversed, mono-ink
-   - mark: colour, mono-ink, mono-paper
-   - app icon: dark tile and light tile
+4. Produce the variants (`references/production-readiness.md`):
+   - mark at three levels: **full** (48 px+), **simplified** (24–47 px, embroidery, deboss), **micro** (favicon)
+   - wordmark lockup and **stacked** lockup: colour, reversed, mono-ink, mono-paper
+   - mono variants as true **knockouts** (holes, not white ink)
+   - app icon: dark tile and light tile, mark raised by tile ÷ φ⁸ for the optical centre
 5. Render the construction drawing (golden rectangle and the mark's guides over a ghosted mark)
    and a contact sheet on light, dark and at 16–28 px. Look once. Fix strokes that poke out,
    blades that vanish and colour-on-colour clashes.
@@ -145,13 +152,45 @@ Replace any claim the user hasn't confirmed (prices, hosting region, offers, dat
 the requirements) with a `[PLACEHOLDER]`, and list those placeholders in the reply. Put the photo
 credit line in the footer.
 
-## Step 7: Export Pack
+## Step 7: Production Readiness
+
+Follow `references/production-readiness.md`:
+
+1. Every mark function returns its features (smallest stroke, gap, tooth, counter). Run the size
+   test for each medium: favicon, app icons, embroidery (cap, left chest), pad print, laser
+   engraving, deboss, screen print. Fix failures in the geometry of the right mark level, never by
+   lowering the threshold, and re-run the table.
+2. Check contrast on both grounds: text 4.5:1, graphic parts 3:1, ink vs accent told apart by
+   lightness. Shift lightness, keep hue, when a colour fails, and tell the user which colours changed.
+3. Run the perception tests once: squint (blur), greyscale, one colour, reversal, small size.
+4. Write the colour spec (HEX, CMYK start, Pantone and thread left to physical guides), the
+   placement guide and the vendor pack list.
+
+## Step 8: Mockup Studio
+
+Follow `references/mockup-studio.md`: one page with a concept switcher and tabs for **Production
+check, Apparel, Print, Merchandise and Digital**.
+
+- **Apparel:** tees (light and dark), polo left chest, cap, lanyard and ID card
+- **Print:** name card with foil back, A5 flyer, roll-up, feather flag, stickers
+- **Merchandise:** packaging box, mug, tote, notebook, pen, tumbler
+- **Digital:** laptop and tablet showing the web app, phone showing the mobile app (realistic
+  screens with sample data, not grey boxes); in drawn mode also favicon, home-screen icon, splash
+  and laptop lid
+
+Use real blank product photos when the environment can fetch them (photo mode); otherwise build
+the SVG items and say so. Position every logo by `references/logo-placement.md`: pick front-facing
+photos, measure reference points (centre front, 2nd button, crown seam, card corners), place at
+the standard position and real size, and add a zoomed inset for small placements such as the left chest. Each card names the technique, variant and real size, with its size-test
+result. Render each tab once and fix what spills or clips before publishing.
+
+## Step 9: Export Pack
 
 Render every file in `references/export-matrix.md`, zip it with a README, and send the files. Name the
 exact file to use for the most urgent need first, e.g. "use `<brand>-avatar-dark-640.jpg` for the
 WhatsApp group icon".
 
-## Step 8: Marketing Kit
+## Step 10: Marketing Kit
 
 Follow `references/marketing-kit.md`:
 
@@ -176,6 +215,9 @@ Output:
 | Rationalization | Reality |
 |---|---|
 | "The proportions look balanced, no need for φ" | "Looks balanced" can't be checked or repeated. Derive the box, radii, bar steps, lockup and padding from φ and keep the ratio report, so the next revision lands on the same grid. |
+| "It looks fine on screen, it'll print fine" | Embroidery, pad print and favicons each have a minimum detail size. Measure the smallest feature at the real size; a 0.9 px gap or a 0.6 mm tooth fills in. |
+| "White ink on the dark tee is the same as a knockout" | It isn't: white ink adds a screen, cracks and covers the fabric. Knockouts let the garment show through. |
+| "A flat SVG t-shirt is enough to sell the logo" | Clients judge the logo on things they recognise. Use real product photos when they can be fetched; otherwise say the mockups are drawn. |
 | "SVG `<text>` with the brand font is fine" | Inside `<img>`, on another machine, or in a PNG export, the font isn't there and the wordmark changes shape. Outline the glyphs. |
 | "Yellow on yellow works if we add an outline" | An outline is a patch for the wrong file. Use the mono-ink variant on brand-colour grounds. |
 | "The colours look readable" | Contrast is a number. A muted grey that looks fine on a laptop fails 4.5:1 on a phone in sunlight. Run the check. |
@@ -203,6 +245,14 @@ Output:
 - A photo has no row in CREDITS.md, or is hotlinked from the source site
 - A photo shows a third-party logo, a competitor's UI or a recognisable person used as an endorser
 - A print file has no bleed, text sits outside the safe area, or a QR is smaller than 20 mm
+- A size test was passed by lowering its threshold, or a medium has no test
+- The colour mark appears on the brand-colour ground in a mockup (cap, flag, box side)
+- A logo floats on a crumpled or angled garment, sits off the left-chest or cap-front position, or
+  ignores the item's real-world size
+- A mockup texture or logo spills outside the item, or an item is drawn at the wrong proportions
+- A device mockup shows white slivers at the screen edge, covers the bezel, or fills the screen with
+  grey placeholder boxes instead of a realistic app view
+- A Pantone or thread code appears that nobody picked from a physical guide
 - Marketing copy contradicts the message house or makes a claim the landing page doesn't
 
 ---
@@ -217,6 +267,11 @@ Output:
 - [ ] Brand book covers story, voice, logo rules, colour, type, layout, photography, iconography, motion
 - [ ] Every photo is licensed, sized for its slot, credited in CREDITS.md and uploaded (never hotlinked)
 - [ ] Landing page placeholders are listed back to the user
+- [ ] Full, simplified and micro marks exist; every size test by medium passes (table kept)
+- [ ] Mono variants are true knockouts; a stacked lockup exists
+- [ ] Colour spec lists HEX and CMYK start, with Pantone and thread marked for physical matching
+- [ ] Mockup studio covers apparel, print, merchandise, packaging and digital, and states photo or drawn mode
+- [ ] Every mockup passed the placement review in `references/logo-placement.md` (position, size, axis, no other brands)
 - [ ] Export zip holds SVG masters, transparent PNGs, app icons 16–1024, favicon.ico, OG image,
       circle-safe avatars at 640 and 1080, and a README naming which file goes where
 - [ ] Message house exists, in EN and BM when local; each marketing piece traces to it
@@ -232,6 +287,9 @@ Output:
 |---|---|
 | `references/naming-patterns.md` | Proposing names, judging connotations, recommending a domain and its migration plan |
 | `references/golden-ratio-construction.md` | Constructing the mark, lockup, clear space and icon on φ; construction drawing; ratio check |
+| `references/production-readiness.md` | Mark levels, knockout and stacked variants, colour spec, size tests by medium, perception tests, vendor pack, legal |
+| `references/logo-placement.md` | Where the logo goes on each apparel, print, merch and digital item, at what size, in which variant; the placement review |
+| `references/mockup-studio.md` | Building the mockup page: apparel, print, merchandise, packaging, digital; photo mode and SVG fallback; material filters |
 | `references/logo-build-pipeline.md` | Building the wordmark from font outlines and generating the mark geometry |
 | `references/brand-book-outline.md` | Writing tokens, the brand book sections and the component set |
 | `references/photo-sourcing.md` | Choosing photo sources, the art-direction brief, slots, downloading, treatment and credits |

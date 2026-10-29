@@ -82,7 +82,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
-| [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, golden-ratio logo with outlined-font wordmark, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
+| [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, golden-ratio logo with outlined-font wordmark, production-ready variants with size tests per medium, apparel/print/merch/packaging/digital mockup studio, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design on the golden ratio, with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control, built on the golden ratio |

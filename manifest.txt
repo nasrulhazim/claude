@@ -73,6 +73,7 @@ skills/logo-designer/SKILL.md
 skills/logo-designer/references/gallery-grid-template.md
 skills/logo-designer/references/golden-ratio-construction.md
 skills/logo-designer/references/individual-showcase-template.md
+skills/logo-designer/references/production-readiness.md
 skills/logo-designer/references/svg-design-patterns.md
 skills/package-dev/SKILL.md
 skills/package-dev/references/package-structure.md
@@ -95,9 +96,12 @@ skills/product-brand-kit/references/export-matrix.md
 skills/product-brand-kit/references/golden-ratio-construction.md
 skills/product-brand-kit/references/landing-page-sections.md
 skills/product-brand-kit/references/logo-build-pipeline.md
+skills/product-brand-kit/references/logo-placement.md
 skills/product-brand-kit/references/marketing-kit.md
+skills/product-brand-kit/references/mockup-studio.md
 skills/product-brand-kit/references/naming-patterns.md
 skills/product-brand-kit/references/photo-sourcing.md
+skills/product-brand-kit/references/production-readiness.md
 skills/project-api/SKILL.md
 skills/project-api/references/api-governance-patterns.md
 skills/project-api/references/api-security-checklist.md
@@ -171,6 +175,7 @@ skills/svg-logo-system/SKILL.md
 skills/svg-logo-system/references/golden-ratio-construction.md
 skills/svg-logo-system/references/preview-gallery-template.md
 skills/svg-logo-system/references/preview-mockup-template.md
+skills/svg-logo-system/references/production-readiness.md
 skills/ui-accessibility/SKILL.md
 skills/ui-accessibility/references/flux-accessibility.md
 skills/ui-accessibility/references/wcag-checklist.md
