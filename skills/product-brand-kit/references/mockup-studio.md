@@ -105,6 +105,29 @@ fetch images; fall back to the SVG items above when it can't, and say which mode
 5. **Check:** the logo never floats above a fold, never crosses a seam or handle, and matches the
    photo's lighting direction.
 
+What worked in practice:
+
+- **Getting URLs:** when only the image CDN (`images.unsplash.com`) is allowlisted but not the
+  site, read each photo's `urls.raw` from Unsplash's own search JSON in the user's browser
+  (`/napi/search/photos?query=…`, logged in), call each `download_location` so Unsplash counts
+  the download, then fetch `urls.raw + "?w=1200&q=80&fm=jpg&fit=max"` into the workspace.
+- **Choosing photos:** blank, front-facing items on plain grounds. No faces: crop a model out
+  above the eyes, or pick flat-lays and hangers.
+- **Cleaning:** clone nearby fabric over any existing logo or neck label (Pillow paste with a
+  feathered mask), and look at a zoomed crop to confirm nothing is left.
+- **Measuring:** draw a 100 px labelled grid over each photo to read the print area. Detect
+  screens and cards by brightness thresholds, and read tilted sheets from a zoomed grid.
+- **Rendering:** one SVG per photo, with `viewBox` set to a square frame around the object (so
+  nothing is cropped), the photo as `<image>`, and the logo layers in photo pixels:
+  - `multiply` for ink on light materials
+  - knockout or reversed variant for dark materials
+  - a light thread filter (small highlight and drop shadow) for embroidery, kept subtle or the
+    logo looks washed out
+  - an affine `matrix()` from three corners for a tilted sheet
+  - a `clipPath` with rounded corners for phone and laptop screens, re-drawing the phone's notch
+- **Shipping:** publish the photos as files next to the page (`photos/<item>.jpg`) and credit
+  every photo on its card ("Photo: <name> on Unsplash").
+
 Blocked environments: if image hosts aren't reachable (sandbox allowlist, unconfirmed API
 account), give the user a shortlist of search terms and ask them to (a) allow the photo domains,
 (b) confirm the stock account, or (c) attach their own blank product photos. Meanwhile, build
