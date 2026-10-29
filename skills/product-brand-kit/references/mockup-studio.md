@@ -120,3 +120,17 @@ the SVG studio.
   so they render the same even if the web font fails.
 - Render each tab once in Playwright before publishing and fix what spills or clips (textures
   outside a shape, text running past a card edge, wrong item proportions).
+
+## Review Checklist (per item, per concept)
+
+Screenshot every card at about 600 px, for every concept, and check:
+
+| Check | Typical fault |
+|---|---|
+| The whole object is inside the stage with a margin (handle, brim, base, phone top) | A mug handle or lanyard cut off at the card edge |
+| Each face of a 3D object maps the art on that face's own axes | Box lid art rotated 90°: build the lid matrix from its two edges (front edge = x, back-to-front edge = y), e.g. `matrix(0.78 0.264 -0.78 0.264 cx cy)` |
+| The object reads as itself at a glance | A cap brim drawn as a dark band under the crown looks like a bucket hat; draw the bill as a lit crescent with a stitch line |
+| Light garments keep folds and texture subtle | Strong side shading on a white tee looks like coloured panels; keep folds at about a quarter of the dark-garment strength |
+| Print effects don't wash the logo out | Ink "holes" filter so strong that a navy logo prints grey; keep speckle light |
+| The longest name and the tallest mark both fit | A long wordmark overflowing a flyer header; wrap the tagline onto two lines |
+| No colour mark on the brand-colour ground | Cap, flag, box side |
