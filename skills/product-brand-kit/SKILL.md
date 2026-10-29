@@ -15,7 +15,7 @@ description: >
   shoots with a credits file, a marketing landing page with no invented claims, a production check (full, simplified and micro
   marks, knockout and stacked variants, colour spec, minimum-detail tests for embroidery, pad print,
   engraving, deboss, screen print and icons), a mockup studio showing the logo on apparel, print,
-  merchandise, packaging and the web, mobile and laptop product (real product photos when reachable), a logo export pack
+  merchandise, packaging and the product on laptop, tablet and phone (real product photos when reachable), a logo export pack
   in every size and format (SVG, transparent PNGs, app icons, favicon.ico, Open Graph image,
   circle-safe WhatsApp/social avatars), and a marketing kit covering digital material (message
   house, social post set, captions, carousel, video script, email, WhatsApp broadcast, blog,
@@ -50,7 +50,7 @@ single piece.
 | `/brand photos` | Art-directed, licensed photo set per slot, with a credits file |
 | `/brand landing` | Marketing landing page using the kit and photo set |
 | `/brand production` | Mark levels, knockout and stacked variants, colour spec, size tests by medium, vendor pack |
-| `/brand mockups` | Mockup studio: apparel, print, merchandise, packaging and digital (web, mobile, laptop) |
+| `/brand mockups` | Mockup studio: apparel, print, merchandise, packaging and digital (laptop, tablet, phone) |
 | `/brand export` | Every logo size and format, zipped, with the WhatsApp/social avatar called out |
 | `/brand marketing` | Message house, then digital and print marketing pieces and a launch calendar |
 
@@ -174,7 +174,9 @@ check, Apparel, Print, Merchandise and Digital**.
 - **Apparel:** tees (light and dark), polo left chest, cap, lanyard and ID card
 - **Print:** name card with foil back, A5 flyer, roll-up, feather flag, stickers
 - **Merchandise:** packaging box, mug, tote, notebook, pen, tumbler
-- **Digital:** web app with favicon, mobile home screen and splash, laptop screen and lid
+- **Digital:** laptop and tablet showing the web app, phone showing the mobile app (realistic
+  screens with sample data, not grey boxes); in drawn mode also favicon, home-screen icon, splash
+  and laptop lid
 
 Use real blank product photos when the environment can fetch them (photo mode); otherwise build
 the SVG items and say so. Position every logo by `references/logo-placement.md`: pick front-facing
@@ -248,6 +250,8 @@ Output:
 - A logo floats on a crumpled or angled garment, sits off the left-chest or cap-front position, or
   ignores the item's real-world size
 - A mockup texture or logo spills outside the item, or an item is drawn at the wrong proportions
+- A device mockup shows white slivers at the screen edge, covers the bezel, or fills the screen with
+  grey placeholder boxes instead of a realistic app view
 - A Pantone or thread code appears that nobody picked from a physical guide
 - Marketing copy contradicts the message house or makes a claim the landing page doesn't
 

@@ -13,7 +13,7 @@ the page works offline and inside an artifact. A switcher swaps the concept; tab
 | Apparel | White tee (screen print), black tee (knockout on dark), polo left chest (embroidery, with a zoomed detail circle), cap front (stacked mono paper, embroidered), lanyard + ID card |
 | Print | Name card front + gold-foil back, A5 flyer (crop marks, bleed note, sample QR), roll-up banner 850 × 2000, feather flag, die-cut stickers |
 | Merchandise | Packaging box in 3/4 view (front, side, lid), mug, tote (1 spot colour on natural canvas), notebook (blind deboss), pen (pad print, zoomed detail), tumbler (laser engraving through powder coat) |
-| Digital | Web app in a browser (favicon in the tab, lockup in the sidebar, sample dashboard), mobile app (home-screen icon among others + splash screen), laptop showing the web app, laptop lid with die-cut stickers |
+| Digital | Laptop and tablet showing the web app (lockup in the sidebar, realistic dashboard with sample data), phone showing the mobile app home (lockup in the header); drawn mode adds the browser tab favicon, home-screen icon, splash screen and laptop-lid stickers |
 
 Each card caption states the **technique · variant · real size**, and shows the matching size-test
 pill from `production-readiness.md` when one exists.
@@ -58,11 +58,23 @@ shadow ellipse under the item.
 - **Box faces:** draw the three faces as parallelograms and place each face's art with an SVG
   `matrix()` that matches the face's skew (front `matrix(1 0.338 0 1 x y)`, side
   `matrix(1 -0.338 0 1 x y)`, lid `matrix(0.71 -0.24 0.71 0.24 x y)` for a 30° view).
-- **Screens:** build the app view from simple rectangles in the brand tokens (sidebar, search,
-  chart, cards). It shows where the logo lives in the product, so keep it schematic rather than a
-  fake real UI.
-- **Phones:** a rounded frame with a clipped screen; home screen as a 4 × 4 icon grid with the
-  brand icon at real size and its label under it.
+- **Screens:** build a realistic app view, not grey boxes. A believable screen is what sells the
+  logo in context. Include:
+  - **Web app (laptop, tablet):** dark sidebar with the reversed lockup top-left, a workspace
+    label and nav items with icons and text (one active); a top bar with breadcrumb, page title,
+    search box, date filter and avatar; four KPI cards (label, value, delta in green or red,
+    sparkline); a line chart with gridlines, axis labels, legend and a target line; a ranked bar
+    list; a table with column headers, rows and status pills. At tablet width, drop the
+    sparklines and one table column.
+  - **Mobile app (phone):** status bar (9:41, battery), dark header with the reversed lockup and
+    avatar, a greeting, a search or ask field; a 2 × 2 KPI grid, one chart card, one list item,
+    and a bottom tab bar with the home indicator. Nothing may sit under the tab bar.
+  - Use plausible local data (states, RM, months) and mark it **sample data** on screen; people
+    are placeholders like `[Name]` and `[Sample user]`.
+  - Use the brand tokens only for the sidebar, primary line, accents and buttons; keep the rest
+    neutral greys so the logo and data stand out.
+- **Phones (drawn mode):** a rounded frame with a clipped screen; home screen as a 4 × 4 icon
+  grid with the brand icon at real size and its label under it.
 
 ## Material Filters
 
@@ -89,7 +101,7 @@ fetch images; fall back to the SVG items above when it can't, and say which mode
    product shoots, Unsplash, Pexels, Openverse/Wikimedia (check each photo's licence). Search one
    item per query: "blank white t-shirt", "blank black t-shirt", "blank white mug", "blank tote
    bag", "blank cap front", "blank business card", "blank notebook", "blank tumbler", "blank
-   product box", "laptop mockup screen", "phone mockup".
+   product box", "laptop mockup screen", "tablet on desk blank screen", "phone mockup".
 2. **Get the files.** Download through the source's API (Unsplash: trigger the download endpoint).
    Inside an artifact, upload each photo as an asset, since external image URLs are blocked.
    Record photographer, source and licence in `photos/CREDITS.md`.
@@ -126,7 +138,8 @@ What worked in practice:
   - a light thread filter (small highlight and drop shadow) for embroidery, kept subtle or the
     logo looks washed out
   - an affine `matrix()` from three corners for a tilted sheet
-  - a `clipPath` with rounded corners for phone and laptop screens, re-drawing the phone's notch
+  - a `clipPath` with rounded corners for laptop, tablet and phone screens, re-drawing the phone's
+    notch; measure the lit glass from zoomed corners (see `logo-placement.md`)
 - **Shipping:** publish the photos as files next to the page (`photos/<item>.jpg`) and credit
   every photo on its card ("Photo: <name> on Unsplash").
 

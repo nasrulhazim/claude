@@ -61,7 +61,19 @@ instead of enlarging the logo.
 | Browser tab | Favicon | Micro mark |
 | Splash screen | Centred horizontally, slightly above the vertical centre (optical centre); endorsement line near the bottom | Stacked reversed on the brand ground |
 | Home screen | App icon among other icons at real size | Full mark at tile ÷ φ |
-| Laptop / phone mockups | Content fills the screen exactly, clipped to the screen's rounded corners; redraw the notch or camera over the content | — |
+| Mobile app header | Top-left of the header, under the status bar, with the greeting below it | Reversed lockup on a dark header |
+| Laptop / tablet / phone mockups | Content fills the screen exactly, clipped to the screen's rounded corners; redraw the notch or camera over the content | — |
+
+### Placing a screen on a device photo
+
+1. **Measure the glass, not the device.** Find the lit screen's edges in photo pixels (brightness
+   threshold, then a 4× zoom of the top-left and bottom-right corners to read the exact edge,
+   corner radius and notch). Measuring the bezel or guessing from the outline leaves white slivers
+   or covers the bezel.
+2. **Design at a real logical size with the screen's aspect**: laptop 1280 × 849, tablet
+   landscape 1112 × 833, phone 390 × 840. Scale it uniformly onto the measured rectangle.
+3. **Clip to the screen's corner radius** and draw the notch or camera back on top.
+4. **Add a faint glare** (white diagonal gradient at about 10%) so the screen sits behind glass.
 
 ## Review Pass
 
@@ -73,3 +85,4 @@ For every item, for every concept, check:
 - [ ] The surface under it is flat and front-facing; if not, the photo is replaced
 - [ ] No other brand marks remain on the item (labels, emblems, prints)
 - [ ] Small placements (left chest, pen, sleeve) have a magnified inset
+- [ ] Screens: no white sliver at any edge, notch redrawn, content not stretched
