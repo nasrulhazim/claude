@@ -82,10 +82,10 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
-| [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, outlined-font logo, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
+| [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, golden-ratio logo with outlined-font wordmark, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
-| [svg-logo-system](skills/svg-logo-system/) | SVG logo system design with multi-platform export |
-| [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control |
+| [svg-logo-system](skills/svg-logo-system/) | SVG logo system design on the golden ratio, with multi-platform export |
+| [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control, built on the golden ratio |
 | [courseware-builder](skills/courseware-builder/) | Interactive HTML courseware builder with animated diagrams |
 | [docs-explainer-video](skills/docs-explainer-video/) | Docs page to a branded, narrated 60s explainer MP4 (720p/1080p/4K) — real logo and colours from the live site, word-by-word config scenes, topology diagram, "it's live" browser scene, music, SFX and a local text-to-speech narrator synced from the same timeline; vendor-neutral |
 | [docs-video-series](skills/docs-video-series/) | Whole docs site to a video series plan — per-page notes, triage (video / merge / feeds / none / hold), series map with hooks from the docs' own warnings, wave-1 scene sheets, 9:16 gotcha shorts, engine gaps, docs issues to fix first, gated roadmap |

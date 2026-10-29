@@ -34,8 +34,9 @@ for ch in word:
     else:
         sp = SVGPathPen(gs); gs[g].draw(TransformPen(sp, (1, 0, 0, -1, x, 0))); parts.append(sp.getCommands())
     x += hmtx[g][0] + track
-# Then: measure total bounds, pad 6% of upm, scale to 120 px tall,
-# emit <path d="..."> + the mark at mark_at inside one <g transform>.
+# Then: scale so the word's ink height = mark height / phi, place it mark height / phi^3 after the
+# mark, pad by mark height / phi^2, and emit <path d="..."> + the mark inside one <g transform>.
+# See golden-ratio-construction.md for the numbers and the ratio check.
 ```
 
 - Replacing a letter with the mark: size it to ~95% of that glyph's height so it doesn't look heavier
@@ -43,6 +44,9 @@ for ch in word:
 - Apply the same tracking to measuring and drawing, or the bounds drift.
 
 ## Mark Geometry (example: an N-blade shutter)
+
+Take every length below from the φ scale (`golden-ratio-construction.md`): the disc radius `R`,
+the opening at `R/φ²`, the stroke at `R/φ³`.
 
 ```python
 def aperture(cx, cy, R, n=4, s_ratio=0.32, rot=15, sw_ratio=0.09):

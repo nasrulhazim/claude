@@ -45,7 +45,8 @@ Spacing 4/8/12/16/24/32/48. Radius sm 8, md 12, lg 16, pill 999, and the icon ti
    - date and timezone format
    - no emoji
 4. **Logo usage**:
-   - clear space = the mark's diameter
+   - construction: the golden-ratio drawing and the φ steps the mark uses (`golden-ratio-construction.md`)
+   - clear space = mark height ÷ φ² (0.382 of the mark's height); lockup gap = mark height ÷ φ³
    - minimum sizes; below 24 px use the app icon
    - which file goes on which ground
    - the don'ts

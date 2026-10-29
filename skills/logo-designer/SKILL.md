@@ -2,7 +2,7 @@
 name: logo-designer
 metadata:
   compatible_agents: [claude-code]
-  tags: [design, svg, logo, mascot, emblem, lettermark, icon, branding]
+  tags: [design, svg, logo, mascot, emblem, lettermark, icon, branding, golden-ratio]
 description: >
   Professional SVG logo designer with granular control over logo category, color palette, container
   frame, and rendering style. Produces 25 SVG concepts (5 concepts x 5 variations), interactive grid
@@ -15,7 +15,8 @@ description: >
   stencil, engraving, halftone, silhouette, layered, stipple, pixel, doodle). Use this skill
   whenever the user asks to design a logo, create a mascot, build a brand mark, generate emblem,
   design lettermark, or says "design me a logo", "I need a mascot for X", "buat logo untuk",
-  "reka logo", "design logo brand".
+  "reka logo", "design logo brand". Every logo is constructed on the golden ratio (golden rectangle
+  outer shape, φ-stepped proportions, lockup and padding) with a construction drawing.
 ---
 
 # Logo Designer
@@ -171,6 +172,7 @@ Create **25 SVGs** organized as **5 concepts x 5 variations**:
 - Self-contained — no external fonts, no raster images
 - Include background rect for preview (production versions will strip it)
 - Apply the user's chosen palette, frame, and style consistently
+- Construct the frame, proportions and lockup on the golden ratio (see Golden Ratio Construction below)
 
 **Diversity rules across the 5 concepts:**
 - Concept 1-2: Closest to user's brief (safe/expected)
@@ -275,6 +277,7 @@ From the chosen final logo, generate:
 | `production/logo-icon-light.svg` | Icon only, 200x200 viewBox, NO bg rect |
 | `production/logo-wordmark-dark.svg` | With brand name, for dark bg |
 | `production/logo-wordmark-light.svg` | With brand name, for light bg |
+| `production/logo-construction.svg` | Golden-ratio construction drawing with the mark's guides |
 
 **Production rules:**
 - NO background `<rect>` — these embed into pages that provide their own bg
@@ -313,6 +316,24 @@ logo-preview.html
 ---
 
 ## SVG Design Principles
+
+### Golden Ratio Construction
+
+Build every concept and every production file on the golden ratio, φ ≈ 1.618
+(`references/golden-ratio-construction.md`):
+
+| Rule | Value |
+|---|---|
+| Outer shape | Square (1:1) or golden rectangle (1:φ); framed logos fit the frame to the same box |
+| Curves | Radii from one φ scale: r, r/φ, r/φ², r/φ³; concentric rings step by φ |
+| Rhythm | Repeated parts step by φ (h/φ², h/φ, h); width : gap = φ : 1 |
+| Lockup | Wordmark ink height = mark height ÷ φ; gap = mark height ÷ φ³ |
+| Clear space | Mark height ÷ φ² on every side |
+| App icon | Mark's longest side = tile ÷ φ |
+
+Compute these in code, ship a construction drawing with the final logo, and keep the ratio report.
+A mascot or illustrated emblem applies the rules to its frame, lockup and padding, and uses the φ
+scale for the main proportions (head-to-body, frame-to-figure).
 
 ### Monochrome Technique (Reka Grafix Reference)
 
@@ -363,3 +384,4 @@ The monochrome style from the reference images uses these specific techniques:
 | `references/gallery-grid-template.md` | HTML template for Phase 1 grid gallery (dark bg, 5x5 layout) |
 | `references/individual-showcase-template.md` | HTML template for individual logo showcase (branded bg) |
 | `references/svg-design-patterns.md` | SVG code patterns for each rendering style |
+| `references/golden-ratio-construction.md` | φ rules, Python helpers, construction drawing and ratio check for every logo |
