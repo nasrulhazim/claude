@@ -3,7 +3,7 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [2.13.0] - 2026-11-15
+## [2.14.0] - 2026-11-15
 
 ### Added
 
@@ -27,6 +27,26 @@ The format follows [Keep a Changelog](https://keepachangelog.com) and this proje
 
 - `ui-ux-sop` routing gains a "Blueprint prototype" row: `ui-ux-pro-max` is primary (designer)
   with `impeccable` as critic, the one route where it is more than a data source
+
+## [2.13.0] - 2026-10-29
+
+### Added
+
+- Golden-ratio logo construction in `product-brand-kit`, `logo-designer` and `svg-logo-system`
+  (`references/golden-ratio-construction.md`): 1:1 or 1:φ box, φ-scale radii, φ-stepped rhythm,
+  φ lockup, clear space and icon padding, a construction drawing, Python helpers and a ratio check;
+  wired into the brand book outline, the logo build pipeline and `/design-logo`
+- `product-brand-kit` logo placement rules (`references/logo-placement.md`): standard position,
+  size and variant per item (tee, left chest, cap, ID badge, name card, flyer, roll-up, banner,
+  box, mug, tote, notebook, bottle, pen, web app, splash), measuring from reference points, zoom
+  insets and a per-item review pass
+
+### Changed
+
+- `product-brand-kit` mockup studio rebuilt on real Unsplash photos: face-free blanks, cloning out
+  existing logos, measured print areas, multiply/knockout/thread/affine layers, credits; realistic
+  web and mobile app screens replace schematic boxes, tablet added, and an exact screen-fitting
+  procedure (lit-glass corners, logical sizes, clip, notch, glare)
 
 ## [2.12.0] - 2026-10-27
 
