@@ -121,7 +121,7 @@ from the skills and agents that use them. None is copied into this repo. Wiring:
 |---|---|---|
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
 | ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer`, `typescript-developer`, `go-developer`, `python-developer` |
-| Design skills (ui-ux-pro-max, taste, interface-design, impeccable, emilkowalski/skills, shadcn) | `ui-ux-sop` | `ui-designer` |
+| Design skills (ui-ux-pro-max, taste, interface-design, impeccable, emilkowalski/skills, shadcn) | `ui-ux-sop`, `product-blueprint` (ui-ux-pro-max + impeccable prototype loop) | `ui-designer` |
 
 ## Managed Preference Blocks
 

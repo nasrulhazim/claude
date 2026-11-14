@@ -3,6 +3,31 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.13.0] - 2026-11-15
+
+### Added
+
+- `product-blueprint` builds a clickable prototype after the blueprint (`/blueprint prototype`,
+  `/blueprint critique`, `/blueprint deploy`): a static HTML + Tailwind + Alpine.js site that walks
+  the MVP acceptance walkthrough end to end, including its failure and recovery, with sample data
+  labelled as sample and a BR-ID overlay on every screen
+- Design loop: `ui-ux-pro-max` seeds `DESIGN.md` and light/dark tokens, `impeccable` critiques
+  (scored) and audits each deployed round, `ui-ux-pro-max` revises from targeted `--domain`
+  queries — tokens before screens. P0–P3 severity scale, `CRITIQUE.md` round log, exit after a
+  clean round or 3 rounds. Hand rubric and fallbacks when either skill is missing
+  (`references/prototype-loop.md`)
+- Unsplash photos only where the product itself shows pictures, never as fake users: MCP / API /
+  shortlist routes, hotlinking with `download_location` per the API guidelines, on-page credit and
+  `CREDITS.md` (`references/unsplash-photos.md`)
+- Netlify deploy per round (draft URL) and `--prod` for the final round via the Netlify MCP
+  connector, the CLI or manual drop; `_headers` with `noindex` and a CSP that allows
+  `images.unsplash.com` (`references/netlify-deploy.md`)
+
+### Changed
+
+- `ui-ux-sop` routing gains a "Blueprint prototype" row: `ui-ux-pro-max` is primary (designer)
+  with `impeccable` as critic, the one route where it is more than a data source
+
 ## [2.12.0] - 2026-10-27
 
 ### Added
