@@ -89,7 +89,10 @@ skills/php-best-practices/references/refactoring-catalog.md
 skills/product-blueprint/SKILL.md
 skills/product-blueprint/references/blueprint-sections.md
 skills/product-blueprint/references/contract-patterns.md
+skills/product-blueprint/references/netlify-deploy.md
 skills/product-blueprint/references/nfr-checklist.md
+skills/product-blueprint/references/prototype-loop.md
+skills/product-blueprint/references/unsplash-photos.md
 skills/product-brand-kit/SKILL.md
 skills/product-brand-kit/references/brand-book-outline.md
 skills/product-brand-kit/references/export-matrix.md

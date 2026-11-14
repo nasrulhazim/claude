@@ -2,7 +2,7 @@
 name: product-blueprint
 metadata:
   compatible_agents: [claude-code]
-  tags: [requirements, roadmap, architecture, mockups, html, product-planning, prototype]
+  tags: [requirements, roadmap, architecture, mockups, prototype, html, product-planning, design-loop, netlify, unsplash]
 description: >
   Turns a product's raw source material — a business requirements (BR) document, prototype
   screenshots, a Google Drive folder or a local docs folder — into one tabbed HTML blueprint:
@@ -10,19 +10,26 @@ description: >
   requirements the BR doc implies but never states, an architecture section with state machines,
   entities, the key contract and Pest tests for the riskiest behaviour, a phased roadmap with exit
   criteria, a sprint-level delivery plan with risks, and HTML mockups for the screens the prototype
-  does not have yet. Use this skill whenever the user shares requirements or a prototype for a new
-  product and asks for "requirements, roadmap, plan, mockups", "study this folder", "turn this BR
-  into a plan", "what's missing from the prototype", "kaji folder ni", "buat requirement dan
-  roadmap", "rangka pelan projek dari BR ni", or "buat mockup untuk skrin yang belum ada". Pairs
-  with project-requirements for a formal SRS and project-roadmap for a standalone ROADMAP.md, and
-  hands off to product-brand-kit once the product is scoped.
+  does not have yet. Then builds a clickable static prototype of the MVP walkthrough in a design
+  loop — ui-ux-pro-max designs and revises, impeccable critiques each round, licensed Unsplash
+  photos fill the slots that need real pictures — and deploys every round to Netlify so the team
+  gets a live URL immediately. Use this skill whenever the user shares requirements or a prototype
+  for a new product and asks for "requirements, roadmap, plan, mockups", "study this folder", "turn
+  this BR into a plan", "what's missing from the prototype", "build a prototype from the
+  blueprint", "deploy the prototype to Netlify", "kaji folder ni", "buat requirement dan roadmap",
+  "rangka pelan projek dari BR ni", "buat mockup untuk skrin yang belum ada", "buat prototaip dari
+  blueprint", or "deploy prototaip ke Netlify". Pairs with project-requirements for a formal SRS
+  and project-roadmap for a standalone ROADMAP.md, and hands off to product-brand-kit once the
+  product is scoped.
 ---
 
 # Product Blueprint
 
 Reads every source file a product has, then produces a single blueprint page a founder can
 validate before anyone writes code. The blueprint argues for an order of work. It does not just
-restate the requirements.
+restate the requirements. Once the blueprint holds, it turns the MVP walkthrough into a clickable
+prototype that is designed, critiqued and redesigned in rounds, and lives on a Netlify URL from
+round one.
 
 ## Command Reference
 
@@ -33,6 +40,9 @@ restate the requirements.
 | `/blueprint architecture` | Architecture tab only: layers, state machines, entities, contract, tests |
 | `/blueprint roadmap` | Roadmap and delivery plan tabs only |
 | `/blueprint mockups` | Mockups for the screens the prototype is missing |
+| `/blueprint prototype` | Build the clickable prototype and run the design → critique → revise loop (Steps 5–6) |
+| `/blueprint critique` | Run one more critique round on the existing prototype and apply the fixes |
+| `/blueprint deploy` | Deploy the current prototype to Netlify (draft URL; `--prod` for the stable URL) |
 
 ---
 
@@ -42,9 +52,12 @@ restate the requirements.
 - The user wants to validate architecture and order of work before implementation
 - A prototype exists and the user wants to know what it does not yet prove
 - A pilot user, partner or client needs one page that explains scope, phases and risks
+- The blueprint is agreed and the team needs something to click through and share by link
 
 **Do not** use this skill for an SRS with traceability (use `project-requirements`), a roadmap
-for an existing codebase (use `project-roadmap`), or naming and branding (use `product-brand-kit`).
+for an existing codebase (use `project-roadmap`), naming, logo and landing page
+(use `product-brand-kit`), or production UI inside a Laravel app (use `ui-ux-sop` →
+`livewire-flux`). The prototype is a throwaway static site, never the product's codebase.
 
 ---
 
@@ -118,6 +131,9 @@ Output target:
 - **Artifact tool available** (claude.ai / Cowork): publish the page as an artifact.
 - **Otherwise**: write `docs/blueprint/<product>-blueprint.html` and tell the user the path.
 
+Once the prototype is live (Step 6), add its Netlify URL to the blueprint masthead and the
+Mockups tab, so the static mockups point to the clickable version.
+
 ---
 
 ## Step 4: Hold the Line on Judgement
@@ -132,6 +148,51 @@ Output target:
 
 ---
 
+## Step 5: Build the Prototype in a Design Loop
+
+The prototype makes the **MVP acceptance walkthrough** (Delivery plan tab) clickable end to end,
+including its one failure and recovery. Screens outside that path are out of scope unless the
+user names them. Full procedure, folder layout and round log: `references/prototype-loop.md`.
+
+This is a fixed two-skill route that `ui-ux-sop` recognises as "Blueprint prototype": the
+**designer** is `ui-ux-pro-max`, the **critic** is `impeccable`. No third design skill is loaded.
+
+| Round step | Who | Does | Writes |
+|---|---|---|---|
+| 0. Seed | ui-ux-pro-max | `--design-system` for the product type, reconciled with the prototype's visual direction from Step 1 (the existing prototype wins) | `prototype/DESIGN.md`, `css/tokens.css` (light + dark) |
+| 1. Build | you | Static HTML + Tailwind + Alpine.js, one file per screen, sample data in `data/*.json`, every screen tagged with its BR IDs | `prototype/` |
+| 2. Deploy | you | Draft deploy to Netlify (Step 6) | Round URL |
+| 3. Critique | impeccable | `critique` (design heuristics, scored) and `audit` (a11y, responsive CSS, performance) on the rendered round, at the user's real viewport | `prototype/CRITIQUE.md` round entry |
+| 4. Revise | ui-ux-pro-max | Turns each finding into a targeted `--domain` query (ux, color, typography, style, chart), updates `DESIGN.md` and tokens first, then the screens | Updated design + changelog line per finding |
+
+Repeat 1–4. **Exit** when a round has no P0/P1 findings, the audit has no AA failure in either
+theme, and the critique score did not drop — or after **3 rounds**, whichever comes first. Unresolved
+findings stay in `CRITIQUE.md` as open items; they are never silently dropped.
+
+Photos: only for slots that need a real picture (listing images, venues, products, onboarding
+or marketing panels). Never for avatars of "customers" or team members — use initials. Sourcing,
+hotlinking and credit rules: `references/unsplash-photos.md`.
+
+---
+
+## Step 6: Deploy to Netlify
+
+Every round gets its own draft URL so the critique runs on the deployed page and the user can
+watch the design change. The final round goes to the stable production URL. Details, the
+`_headers` file and the three deploy routes: `references/netlify-deploy.md`.
+
+| Route | When | Command |
+|---|---|---|
+| Netlify MCP connector | Connected in this session | Deploy services tool, site `<product>-prototype` |
+| Netlify CLI | `netlify` installed and `NETLIFY_AUTH_TOKEN` set | `netlify deploy --dir=prototype` (round) · `--prod` (final) |
+| Manual | Neither available | Zip `prototype/`, user drags it onto app.netlify.com/drop; give the exact steps |
+
+Prototype sites ship with `X-Robots-Tag: noindex` and a visible "Prototype — sample data" banner.
+Ask before making a prototype public if the BR doc is marked confidential; Netlify password
+protection needs a paid plan, so say so instead of promising it.
+
+---
+
 ## Common Rationalizations
 
 | Rationalization | Reality |
@@ -142,6 +203,11 @@ Output target:
 | "Phase 1 should be the planning screens, they're easiest" | Easy-first defers the risk that can kill the product. Lead with the integration nobody has proven yet. |
 | "The API limits are well known" | Platform limits change. Unverified numbers go into the blueprint flagged for Phase 0. |
 | "AI can publish if the user trusts it" | One bad auto-publish costs more than every draft saved. Keep approve and publish out of the AI surface. |
+| "Round 1 looks fine, skip the critique" | The designer can't grade its own work. One impeccable round always runs before calling the prototype done. |
+| "I'll fix the critique findings straight in the HTML" | Fixes that skip `DESIGN.md` and the tokens drift back next round. Design first, screens second. |
+| "Keep looping until it's perfect" | Three rounds, then stop and log what's open. A prototype that never ships proves nothing. |
+| "Stock photos make the dashboard feel real" | Stock faces as customers are fake testimonials. Initials for people, photos only where the product itself shows pictures. |
+| "I'll deploy once it's finished" | A URL from round one is the point — the user reviews progress and redirects early. |
 
 ---
 
@@ -154,6 +220,11 @@ Output target:
 - The mockups use a different visual language from the prototype
 - Prices, hosting regions, dates or company details appear without a source
 - The architecture has one state machine for both planning and execution
+- The prototype has screens outside the MVP walkthrough but skips the failure-and-recovery step
+- A critique round has findings but `DESIGN.md` / `tokens.css` did not change
+- More than two design skills loaded for the prototype loop, or a fourth round started
+- Unsplash photos downloaded and re-hosted without credit, or used as people the product claims as users
+- A prototype deployed without the sample-data banner or the `noindex` header
 
 ---
 
@@ -167,6 +238,10 @@ Output target:
 - [ ] Mockups exist only for screens the prototype lacks, each listing the BRs it covers
 - [ ] Unverified external limits are flagged; nothing in the page is invented
 - [ ] The page works at phone width and in light and dark themes
+- [ ] (Prototype) The MVP walkthrough clicks through end to end, including the failure and its recovery
+- [ ] (Prototype) `CRITIQUE.md` has one entry per round with score, findings, fixes and open items; the loop met its exit rule
+- [ ] (Prototype) Every photo has a row in `CREDITS.md` and an on-page credit; no photo stands in for a real person
+- [ ] (Prototype) The production Netlify URL loads, shows the sample banner, sends `noindex`, and is linked from the blueprint
 
 ---
 
@@ -177,3 +252,6 @@ Output target:
 | `references/blueprint-sections.md` | Building any tab: what goes in it, the tables and their columns, layout notes |
 | `references/nfr-checklist.md` | Writing the non-functional requirements and the risks table |
 | `references/contract-patterns.md` | Writing the architecture tab's contract, enum, action, Pest tests and MCP surface |
+| `references/prototype-loop.md` | Building the prototype: folder layout, seed, ui-ux-pro-max queries, impeccable critique/audit, severity scale, round log, exit rule, fallbacks |
+| `references/unsplash-photos.md` | Any prototype screen that needs a real photo: when to use one, search and art direction, hotlink vs download, credits |
+| `references/netlify-deploy.md` | Deploying a round or the final prototype: `_headers` (noindex + CSP), MCP / CLI / drop routes, URL handling |

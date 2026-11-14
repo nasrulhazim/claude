@@ -84,6 +84,12 @@ rules.
 | Technical audit | `impeccable audit` | `web-design-guidelines`, `ui-accessibility` |
 | Edge-case stress test | `break-ui` | — |
 | Explore variants | `prototype` (React) or `impeccable live` / `generate` | — |
+| Blueprint prototype (static, from `product-blueprint`) | `ui-ux-pro-max` as designer — seeds and revises `DESIGN.md` and tokens | `impeccable critique` + `audit` as the critic each round; no third design skill |
+
+**Blueprint prototype loop:** the one route where `ui-ux-pro-max` is primary instead of data.
+It designs, `impeccable` critiques the deployed round, and `ui-ux-pro-max` revises from targeted
+`--domain` queries — at most 3 rounds. Precedence rows 1–3 still sit above it. The procedure lives
+in `product-blueprint` (`references/prototype-loop.md`).
 
 **Retired from routing:** `frontend-design` and `bencium-controlled-ux-designer` — superseded by
 `design-taste-frontend` and `interface-design`. Load them only when the user names them.
@@ -103,7 +109,7 @@ When two skills disagree, the higher row wins.
 | 2 | Project `DESIGN.md`, the existing component library (Flux / shadcn), sibling components | Refinement preserves the incumbent look; only a requested redesign replaces it |
 | 3 | Accessibility floor | WCAG 2.1 AA, keyboard path, visible focus, contrast in **both** themes, reduced motion. Never traded away |
 | 4 | Primary skill for the surface | Pages → taste house rules. App screens → interface-design craft rules |
-| 5 | `ui-ux-pro-max` data | Palettes, fonts and product reasoning are inputs, not verdicts. Its style catalogue (glassmorphism, neumorphism, gradients) loses to taste house rules on pages |
+| 5 | `ui-ux-pro-max` data | Palettes, fonts and product reasoning are inputs, not verdicts (except in the blueprint prototype loop, where it is row 4). Its style catalogue (glassmorphism, neumorphism, gradients) loses to taste house rules on pages |
 
 ---
 
@@ -116,7 +122,7 @@ When two skills disagree, the higher row wins.
 | 3. Direction | Pages: taste deals directions, pick one. App screens: domain, colour world, signature, defaults rejected. Costly or ambiguous → 2–3 options with a recommendation | Chosen direction |
 | 4. Build | Existing components first, semantic tokens only, every state: hover, focus, disabled, loading, empty, error | Working code |
 | 5. Gate | Swap, squint, signature and token tests. Pages: taste's inspector. Anything showing user data: `break-ui` | Fix list cleared |
-| 6. Look | Render and look at the user's real viewport (§5). Batch fixes, then look once more | Verified UI |
+| 6. Look | Render and look at the user's real viewport (House Overrides). Batch fixes, then look once more | Verified UI |
 | 7. Persist | Write the decisions to `DESIGN.md` | Updated `DESIGN.md` |
 
 ---

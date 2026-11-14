@@ -35,7 +35,7 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 
 | Skill | Description |
 |---|---|
-| [product-blueprint](skills/product-blueprint/) | BR doc + prototype screenshots to one tabbed HTML blueprint — requirements, NFRs, architecture, roadmap, sprint plan and mockups for the missing screens |
+| [product-blueprint](skills/product-blueprint/) | BR doc + prototype screenshots to one tabbed HTML blueprint — requirements, NFRs, architecture, roadmap, sprint plan and mockups for the missing screens — then a clickable prototype designed by ui-ux-pro-max, critiqued by impeccable in up to 3 rounds, with Unsplash photos and a Netlify URL per round |
 | [project-api](skills/project-api/) | Full API lifecycle — design through governance |
 | [project-conventions](skills/project-conventions/) | Auto-update CLAUDE.md with corrections, preferences, and gotchas |
 | [project-ddd](skills/project-ddd/) | Pragmatic DDD — domain discovery, migration planning, and boundary enforcement |
@@ -190,7 +190,7 @@ current and keeps its own licence. Skip all of them with `--no-companions`.
 |---|---|---|
 | graphify | `repo-research`, `project-ddd`, `debugging` | `software-architect`, `fleet-auditor` |
 | ponytail | `design-patterns`, `php-best-practices`, `performance-tuning` | `code-reviewer`, `laravel-developer`, `typescript-developer`, `go-developer`, `python-developer` |
-| Design skills | `ui-ux-sop` | `ui-designer` |
+| Design skills | `ui-ux-sop`, `product-blueprint` | `ui-designer` |
 
 Both are accelerators, not prerequisites — every skill falls back to its normal approach when
 the companion is absent, and the installer reports a skip rather than failing.
