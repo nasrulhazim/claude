@@ -155,7 +155,11 @@ backed by a reference file — **read the reference before executing that step**
    route `auth` guards, a middleware registration in `bootstrap/app.php`, an edition
    predicate, **a composer package behind a menu item that §6 never `require`d, an
    unseeded permission, a runtime `.env` key**), so red tests **and a silently-hidden
-   menu item** pinpoint the missing pieces (see §7d's symptom→cause table). Suggest a commit
+   menu item** pinpoint the missing pieces (see §7d's symptom→cause table). (e) **dependency
+   audit** — `composer audit --locked` against the project's committed lock (never after a
+   `composer update`); report every **critical** and **high** advisory with its fixed version
+   in the hand-off, and flag a project whose `security.yml` still runs `composer update` before
+   auditing (the patched stub audits the lock). Suggest a commit
    message but **do not commit unless asked**. Defer CLAUDE.md / convention drift to **`project-sync`**.
 
 ---
