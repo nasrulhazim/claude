@@ -3,6 +3,21 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.15.0] - 2026-11-22
+
+### Added
+
+- `product-pricing-map` skill — reads a product's spec, features matrix, cost model and billing
+  code (plan config, feature gates, flags), then builds one self-contained HTML pricing map:
+  every feature on exactly one pricing type (included, subscription or seats, one-time pass or
+  unlock, hosted, on-premise, per use, services, add-on), a growth ladder, a column map or React
+  Flow diagram with upgrade paths, plan cards with the reason behind each price, per-use pricing
+  only where our own cost grows, a sales-call simulator (year cost, best fit or break-even) with
+  our direct cost and margin, a filterable feature ledger with each feature's state in code
+  (live, built but off, not built, no gate) and a numbered decisions list. Every figure labelled
+  decided or proposed; every spec-vs-code mismatch becomes a decision. Vendor-neutral
+- `business-analyst` agent loads `product-pricing-map` for packaging and pricing-strategy work
+
 ## [2.14.0] - 2026-11-15
 
 ### Added

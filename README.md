@@ -77,13 +77,14 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 </details>
 
 <details>
-<summary><strong>Business & Design</strong> (8 skills)</summary>
+<summary><strong>Business & Design</strong> (9 skills)</summary>
 
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
 | [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, golden-ratio logo with outlined-font wordmark, production-ready variants with size tests per medium, apparel/print/merch/packaging/digital mockup studio, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
+| [product-pricing-map](skills/product-pricing-map/) | Spec, feature matrix, cost model and billing code to one HTML pricing map — every feature on one way of charging, growth ladder, diagram with upgrade paths, per-use pricing only where our cost grows, sales-call simulator with cost and margin, feature ledger with each feature's state in code, decisions for the team; vendor-neutral |
 | [svg-logo-system](skills/svg-logo-system/) | SVG logo system design on the golden ratio, with multi-platform export |
 | [logo-designer](skills/logo-designer/) | Professional SVG logo designer with granular category and style control, built on the golden ratio |
 | [courseware-builder](skills/courseware-builder/) | Interactive HTML courseware builder with animated diagrams |

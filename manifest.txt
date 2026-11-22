@@ -105,6 +105,13 @@ skills/product-brand-kit/references/mockup-studio.md
 skills/product-brand-kit/references/naming-patterns.md
 skills/product-brand-kit/references/photo-sourcing.md
 skills/product-brand-kit/references/production-readiness.md
+skills/product-pricing-map/SKILL.md
+skills/product-pricing-map/references/approved-examples.md
+skills/product-pricing-map/references/cost-model.md
+skills/product-pricing-map/references/diagram-patterns.md
+skills/product-pricing-map/references/page-anatomy.md
+skills/product-pricing-map/references/pricing-types.md
+skills/product-pricing-map/references/simulator-patterns.md
 skills/project-api/SKILL.md
 skills/project-api/references/api-governance-patterns.md
 skills/project-api/references/api-security-checklist.md
