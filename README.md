@@ -77,11 +77,12 @@ A complete Claude Code toolkit — **skills**, **agents** and **commands** — f
 </details>
 
 <details>
-<summary><strong>Business & Design</strong> (9 skills)</summary>
+<summary><strong>Business & Design</strong> (10 skills)</summary>
 
 | Skill | Description |
 |---|---|
 | [business-card](skills/business-card/) | SVG business card designer with print-ready export |
+| [sticker-pack](skills/sticker-pack/) | Print-ready sticker packs: 5 clearly different concepts × the same 6–8 true messages from the product's docs, directions from ui-ux-pro-max adapted for vinyl, impeccable critique, SVG/300 dpi PNG/PDF with a CutContour spot layer, safe-area/6 pt/contrast gates, styled QR decoded by zbar, laptop-lid mockups and one review gallery per product; one agent per product in parallel |
 | [product-brand-kit](skills/product-brand-kit/) | Name to launch — naming, golden-ratio logo with outlined-font wordmark, production-ready variants with size tests per medium, apparel/print/merch/packaging/digital mockup studio, contrast-checked brand kit, domain plan, licensed photo set, landing page, all-sizes export pack, and digital + print marketing kit |
 | [sales-planner](skills/sales-planner/) | Pricing, quotations, marketing copy, and financial planning |
 | [product-pricing-map](skills/product-pricing-map/) | Spec, feature matrix, cost model and billing code to one HTML pricing map — every feature on one way of charging, growth ladder, diagram with upgrade paths, per-use pricing only where our cost grows, sales-call simulator with cost and margin, feature ledger with each feature's state in code, decisions for the team; vendor-neutral |

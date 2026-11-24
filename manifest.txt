@@ -181,6 +181,13 @@ skills/soc-analyst/references/incident-report-templates.md
 skills/soc-analyst/references/mitre-attack-mapping.md
 skills/soc-analyst/references/remediation-playbooks.md
 skills/soc-analyst/references/vulnerability-patterns.md
+skills/sticker-pack/SKILL.md
+skills/sticker-pack/references/agent-brief.md
+skills/sticker-pack/references/concept-directions.md
+skills/sticker-pack/references/engine-recipe.md
+skills/sticker-pack/references/gallery-and-manifest.md
+skills/sticker-pack/references/print-spec.md
+skills/sticker-pack/references/qr-style.md
 skills/svg-logo-system/SKILL.md
 skills/svg-logo-system/references/golden-ratio-construction.md
 skills/svg-logo-system/references/preview-gallery-template.md
