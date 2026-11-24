@@ -3,6 +3,28 @@
 All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [2.16.0] - 2026-11-24
+
+### Added
+
+- `sticker-pack` skill — print-ready sticker packs for a product or an event: several clearly
+  different concepts (5 by default) that each carry the same 6–8 messages, taken only from shipped
+  facts in the product's own docs (do-not-claim lists respected, no hosts, IPs or secrets).
+  Directions come from ui-ux-pro-max (design-system, style and typography searches per concept)
+  adapted for vinyl (no glow, banding gradients or opacity), then an impeccable critique and audit
+  of the proofs. Every sticker ships as an SVG (Artwork, hidden SafeArea and CutContour layers,
+  text outlined), a 300 dpi PNG with 2 mm bleed and a PDF with a CutContour Separation spot layer.
+  Build gates (asserts): 3 mm safe area on real glyph boxes, 6 pt minimum, 4.5:1 contrast,
+  contour cuts with notches closed and no holes. Styled QR (round dots, solid rounded eyes, centre
+  logo, level H) to a live URL, decoded exactly by zbarimg at full size and 25%. Per-concept
+  laptop-lid mockups, `compare.png`, `manifest.json`, and one review gallery page per product.
+  A parallel mode runs one agent per product with folder isolation and a copy-ready brief
+  (`references/agent-brief.md`). References: print spec, engine recipe (HarfBuzz/fontTools,
+  shapely, rsvg-convert, PyMuPDF CutContour recipe), QR style and decode quirks, a concept
+  direction catalogue (including borrowing an event site's style without its logo), and the
+  gallery/manifest format
+- `brand-designer` agent loads `sticker-pack` for sticker and event swag work
+
 ## [2.15.0] - 2026-11-22
 
 ### Added
